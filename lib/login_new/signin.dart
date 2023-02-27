@@ -15,6 +15,7 @@ class SignInScreen extends StatefulWidget {
   State<SignInScreen> createState() => _SignInScreenState();
 }
 
+
 class _SignInScreenState extends State<SignInScreen> {
 
   TextEditingController _passwordTextController = TextEditingController();
@@ -23,7 +24,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   void initState() {
     _emailTextController.text = 'mmahshookh1@gmail.com';
-    _passwordTextController.text ="123456";
+    _passwordTextController.text ="asdfghjkl";
     // TODO: implement initState
     super.initState();
   }
