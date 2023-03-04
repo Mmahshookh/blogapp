@@ -1,4 +1,5 @@
 import 'package:blogui/BottomNavi/profile.dart';
+import 'package:blogui/BottomNavi/profile/profile%20new.dart';
 import 'package:blogui/BottomNavi/search.dart';
 import 'package:blogui/home/HomeScreen.dart';
 import 'package:blogui/home/main.dart';
@@ -42,7 +43,7 @@ final List _children =[
   HomeScreen(),
   // Category_Section(),
   Search(),
-  Profile(),
+  Profile_new(),
 ];
 
 
@@ -68,12 +69,11 @@ final List _children =[
         CurrentUserAbout =data?[0]['about'];
         CurrentUserImage =data?[0]['profile'];
         return Scaffold(
-
-          backgroundColor: kHomeBGColor,
+          backgroundColor: Colors.black,
           body: _children[widget.currentIndex],
           bottomNavigationBar: Container(
-            height: 64.0,
-            margin: EdgeInsets.all(24.0),
+            height: 55.0,
+            margin: EdgeInsets.all(10.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16.0),
             child: BottomNavigationBar(

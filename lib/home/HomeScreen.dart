@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../BottomNavi/BotttomNavigatorBar.dart';
 import '../BottomNavi/profile.dart';
+import '../BottomNavi/profile/profile new.dart';
 import '../categories/University.dart';
 import '../categories/all.dart';
 import '../categories/educational.dart';
@@ -74,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: kHomeBGColor,
+        backgroundColor: Colors.black,
         leading: InkWell(
             onTap: () {
               Navigator.push(context,
@@ -124,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: Icon(Icons.add))
         ],
       ),
-      backgroundColor: kHomeBGColor,
+      backgroundColor: Colors.black,
 
       body: SingleChildScrollView(
         child: Container(
@@ -159,49 +160,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(
                 height: 24,
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  // children: List.generate(
-                  //   blogTypes.length,
-                  //   (index) => GestureDetector(
-                  //     onTap: () => setState(() {
-                  //       selectedIndex = index;
-                  //     }),
-                  //     child: Padding(
-                  //       padding: const EdgeInsets.only(right: 24.0),
-                  //       child: Column(
-                  //         children: [
-                  //           Text(
-                  //             blogTypes[index],
-                  //             style: TextStyle(
-                  //               fontSize: 20.0,
-                  //               color: selectedIndex == index
-                  //                   ? kLightColor
-                  //                   : kLightColor.withOpacity(0.4),
-                  //               fontWeight: selectedIndex == index
-                  //                   ? FontWeight.bold
-                  //                   : FontWeight.normal,
-                  //             ),
-                  //           ),
-                  //           Container(
-                  //             height: 4.0,
-                  //             width: 4.0,
-                  //             margin: EdgeInsets.only(top: 8.0),
-                  //             decoration: BoxDecoration(
-                  //               borderRadius: BorderRadius.circular(4.0),
-                  //               color: selectedIndex == index
-                  //                   ? kLightColor
-                  //                   : kHomeBGColor,
-                  //             ),
-                  //           ),
-                  //         ],
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
-                ),
               ),
               SizedBox(
                 height: 10.0,
@@ -370,7 +328,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 context,
                                                 MaterialPageRoute(
                                                   builder: (context) =>
-                                                      Univercity_cat(),
+                                                      Profile_new(),
+                                                  // Univercity_cat(),
                                                 ));
                       },
                       child: Container(
