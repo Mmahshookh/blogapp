@@ -13,6 +13,7 @@ import '../categories/sports.dart';
 import '../image_pick/image_uploading.dart';
 import '../other/constants.dart';
 
+
 class HomeScreen extends StatefulWidget {
   HomeScreen();
 
@@ -80,10 +81,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   MaterialPageRoute(builder: (context) => BottomNavBar(3)));
             },
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+
+              padding: const EdgeInsets.only(left: 12,top: 10),
               child: Container(
-                height: 40,
-                width: 40,
+                height: 80,
+                width: 80,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     image: DecorationImage(
@@ -108,8 +110,9 @@ class _HomeScreenState extends State<HomeScreen> {
               CurrentUserImage = data?[0]['profile'];
 
               return Text(
+
                 'hey, ${data?[0]['username']}',
-                style: TextStyle(color: Colors.white, fontSize: 15),
+                style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold),
               );
             }),
         actions: [
@@ -126,74 +129,12 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Container(
           padding:
-              EdgeInsets.only(top: 1.0, bottom: 0.0, left: 24.0, right: 24.0),
+              EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Row(
-              //       children: [
-              //         IconButton(
-              //           onPressed: () {
-              //             // Navigator.push(
-              //             //   context,
-              //             //   MaterialPageRoute(
-              //             //     builder: (context) => Profile(),
-              //             //   ),
-              //             // );
-              //             Navigator.push(
-              //               context,
-              //               MaterialPageRoute(
-              //                 builder: (context) => BottomNavBar(3),
-              //               ),
-              //             );
-              //
-              //           },
-              //           icon: Icon(
-              //             Icons.account_circle,
-              //             size: 50,
-              //           ),
-              //         ),
-              //
-              //         StreamBuilder(
-              //           stream: FirebaseFirestore.instance.collection('users').where('email' ,isEqualTo: CurrentUserEmail).snapshots(),
-              //             builder:(context,snapshot){
-              //             if(!snapshot.hasData){
-              //               return Text('');
-              //             }
-              //
-              //
-              //             var data = snapshot.data?.docs;
-              //             CurrentUserName =data?[0]['username'];
-              //             CurrentUserID =data?[0]['id'];
-              //             CurrentUserAbout =data?[0]['about'];
-              //
-              //             return Text('hey, ${data?[0]['username']}',style: TextStyle(color: Colors.white),);
-              //
-              //             } ),
-              //
-              //
-              //       ],
-              //     ),
-              //     IconButton(
-              //       onPressed: () {
-              //         Navigator.push(
-              //           context,
-              //           MaterialPageRoute(
-              //             builder: (context) => Image_Upload(),
-              //           ),
-              //         );
-              //       },
-              //       icon: Icon(
-              //         Icons.add,
-              //         size: 50,
-              //       ),
-              //     ),
-              //   ],
-              // ),
               SizedBox(
-                height: 24,
+                height: 1,
               ),
               Text.rich(
                 TextSpan(
@@ -222,48 +163,48 @@ class _HomeScreenState extends State<HomeScreen> {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: List.generate(
-                    blogTypes.length,
-                    (index) => GestureDetector(
-                      onTap: () => setState(() {
-                        selectedIndex = index;
-                      }),
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 24.0),
-                        child: Column(
-                          children: [
-                            Text(
-                              blogTypes[index],
-                              style: TextStyle(
-                                fontSize: 20.0,
-                                color: selectedIndex == index
-                                    ? kLightColor
-                                    : kLightColor.withOpacity(0.4),
-                                fontWeight: selectedIndex == index
-                                    ? FontWeight.bold
-                                    : FontWeight.normal,
-                              ),
-                            ),
-                            Container(
-                              height: 4.0,
-                              width: 4.0,
-                              margin: EdgeInsets.only(top: 8.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(4.0),
-                                color: selectedIndex == index
-                                    ? kLightColor
-                                    : kHomeBGColor,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                  // children: List.generate(
+                  //   blogTypes.length,
+                  //   (index) => GestureDetector(
+                  //     onTap: () => setState(() {
+                  //       selectedIndex = index;
+                  //     }),
+                  //     child: Padding(
+                  //       padding: const EdgeInsets.only(right: 24.0),
+                  //       child: Column(
+                  //         children: [
+                  //           Text(
+                  //             blogTypes[index],
+                  //             style: TextStyle(
+                  //               fontSize: 20.0,
+                  //               color: selectedIndex == index
+                  //                   ? kLightColor
+                  //                   : kLightColor.withOpacity(0.4),
+                  //               fontWeight: selectedIndex == index
+                  //                   ? FontWeight.bold
+                  //                   : FontWeight.normal,
+                  //             ),
+                  //           ),
+                  //           Container(
+                  //             height: 4.0,
+                  //             width: 4.0,
+                  //             margin: EdgeInsets.only(top: 8.0),
+                  //             decoration: BoxDecoration(
+                  //               borderRadius: BorderRadius.circular(4.0),
+                  //               color: selectedIndex == index
+                  //                   ? kLightColor
+                  //                   : kHomeBGColor,
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                 ),
               ),
               SizedBox(
-                height: 28.0,
+                height: 10.0,
               ),
               GestureDetector(
                 onTap: () => Navigator.of(context).push(
@@ -276,7 +217,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Hero(
                       tag: "blogImage",
                       child: Container(
-                        height: 200.0,
+                        height: 220.0,
                         width: size.width,
                         decoration: BoxDecoration(
                           color: kLightColor,

@@ -16,12 +16,31 @@ class BottomNavBar extends StatefulWidget {
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
+setSearchParam(String caseNumber) {
+  List<String> caseSearchList = <String>[];
+  String temp = "";
 
+  List<String> nameSplits = caseNumber.split(" ");
+  for (int i = 0; i < nameSplits.length; i++) {
+    String name = "";
+
+    for (int k = i; k < nameSplits.length; k++) {
+      name = name + nameSplits[k] + " ";
+    }
+    temp = "";
+
+    for (int j = 0; j < name.length; j++) {
+      temp = temp + name[j];
+      caseSearchList.add(temp.toUpperCase());
+    }
+  }
+  return caseSearchList;
+}
 class _BottomNavBarState extends State<BottomNavBar> {
 
 final List _children =[
   HomeScreen(),
-  Category_Section(),
+  // Category_Section(),
   Search(),
   Profile(),
 ];
@@ -69,9 +88,9 @@ final List _children =[
               currentIndex: widget.currentIndex,
               items: [
                 buildBottomNavigationBarItem(0,"assets/icons/Home.png","Home"),
-                buildBottomNavigationBarItem(1,"assets/icons/Category.png","Category"),
-                buildBottomNavigationBarItem(2,"assets/icons/Search.png","Search"),
-                buildBottomNavigationBarItem(3,"assets/icons/Account.png","Accounts"),
+                // buildBottomNavigationBarItem(1,"assets/icons/Category.png","Category"),
+                buildBottomNavigationBarItem(1,"assets/icons/Search.png","Search"),
+                buildBottomNavigationBarItem(2,"assets/icons/Account.png","Accounts"),
               ],
             ),
           ),

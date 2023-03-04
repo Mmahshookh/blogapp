@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../other/constants.dart';
 import '../posts/detailed_post.dart';
+import '../posts/edit_post.dart';
 
 class Health_cat extends StatefulWidget {
   const Health_cat({Key? key}) : super(key: key);
@@ -41,37 +42,6 @@ class _Health_catState extends State<Health_cat> {
                     List likes = data[index]['likes'];
 
                     return InkWell(
-                      onLongPress: () {
-                        showDialog(
-                          context: context,
-                          builder: (ctx) => AlertDialog(
-                            title: const Text("Report Post"),
-                            content: const Text("Do you want to report Post?"),
-                            actions: <Widget>[
-                              ElevatedButton(
-                                  style: ButtonStyle(
-                                      backgroundColor: MaterialStatePropertyAll(Colors.green)
-                                  ),
-                                  onPressed: (){
-                                    Navigator.pop(context);
-                                  }, child: Text('cancel')),
-
-                              ElevatedButton(
-                                style: ButtonStyle(
-                                    backgroundColor: MaterialStatePropertyAll(Colors.red)
-                                ),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                  FirebaseFirestore.instance.collection('posts').doc(data[index]['id']).update({
-                                    'reported':true
-                                  });
-                                },
-                                child: const Text("okay"),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
                       onTap: () {
                         Navigator.push(
                             context,
@@ -138,25 +108,137 @@ class _Health_catState extends State<Health_cat> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  height: 200,
-                                  width: 350,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(10),
-                                          topRight: Radius.circular(10)),
-                                      image: DecorationImage(
-                                        image: NetworkImage(
-                                            data[index]["image"]),
-                                        fit: BoxFit.fitWidth,
-                                      )),
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                      height: 200,
+                                      width: 350,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft:
+                                              Radius.circular(10),
+                                              topRight:
+                                              Radius.circular(10)),
+                                          image: DecorationImage(
+                                            image: NetworkImage(
+                                                data[index]["image"]),
+                                            fit: BoxFit.fitWidth,
+                                          )),
+                                    ),
+                                    Positioned(
+                                      top: 10,
+                                      right: 10,
+                                      child: InkWell(
+                                        onTap: () {
+                                          showDialog(
+                                            context: context,
+                                            builder: (ctx) => Padding(
+                                              padding:
+                                              const EdgeInsets.only(
+                                                  left: 190,
+                                                  bottom: 490),
+                                              child: AlertDialog(
+                                                actions: [
+                                                  Row(
+                                                    children: [
+                                                      InkWell(
+                                                        onTap: (){
+                                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Edit_Post()));
+                                                        },
+                                                        child: Icon(
+                                                          Icons.edit,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        "  Edit",
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                            "Mulish-SemiBold"),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: 14,
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      InkWell(
+                                                        onTap:() {
+                                                          showDialog(
+                                                            context: context,
+                                                            builder: (ctx) => AlertDialog(
+                                                              title:
+                                                              const Text("Delete Post"),
+                                                              content: const Text(
+                                                                  "Do you want to delete Post?"),
+                                                              actions: <Widget>[
+                                                                ElevatedButton(
+                                                                    style: ButtonStyle(
+                                                                        backgroundColor:
+                                                                        MaterialStatePropertyAll(
+                                                                            Colors
+                                                                                .green)),
+                                                                    onPressed: () {
+                                                                      Navigator.pop(
+                                                                          context);
+                                                                    },
+                                                                    child: Text('cancel')),
+                                                                ElevatedButton(
+                                                                  style: ButtonStyle(
+                                                                      backgroundColor:
+                                                                      MaterialStatePropertyAll(
+                                                                          Colors.red)),
+                                                                  onPressed: () {
+                                                                    Navigator.pop(context);
+                                                                    FirebaseFirestore
+                                                                        .instance
+                                                                        .collection('posts')
+                                                                        .doc(data?[index]
+                                                                    ['id'])
+                                                                        .delete();
+                                                                  },
+                                                                  child: const Text("okay"),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          );
+                                                        },
+                                                        child: Icon(
+                                                          Icons.delete,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        "  Delete",
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                            "Mulish-SemiBold"),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        child: CircleAvatar(
+                                          radius: 15,
+                                          backgroundColor: Colors.white54,
+                                          child: Icon(
+                                            Icons.more_vert,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                               SizedBox(
                                 height: 10,
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(bottom: 10),
+                                padding:
+                                const EdgeInsets.only(bottom: 10),
                                 child: Row(
                                   mainAxisAlignment:
                                   MainAxisAlignment.spaceEvenly,
@@ -171,56 +253,51 @@ class _Health_catState extends State<Health_cat> {
                                           fontWeight: FontWeight.bold),
                                     ),
                                     InkWell(
-                                        onTap: () {
-                                          showDialog(
-                                            context: context,
-                                            builder: (ctx) =>
-                                                AlertDialog(
-                                                  title: const Text(
-                                                      "Report Post"),
-                                                  content: const Text(
-                                                      "Do you want to report Post?"),
-                                                  actions: <Widget>[
-                                                    ElevatedButton(
-                                                        style: ButtonStyle(
-                                                            backgroundColor:
-                                                            MaterialStatePropertyAll(
-                                                                Colors
-                                                                    .green)),
-                                                        onPressed: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: Text(
-                                                            'cancel')),
-                                                    ElevatedButton(
-                                                      style: ButtonStyle(
-                                                          backgroundColor:
-                                                          MaterialStatePropertyAll(
-                                                              Colors
-                                                                  .red)),
-                                                      onPressed: () {
-                                                        Navigator.pop(
-                                                            context);
-                                                        FirebaseFirestore
-                                                            .instance
-                                                            .collection(
-                                                            'posts')
-                                                            .doc(data?[
-                                                        index]
-                                                        ['id'])
-                                                            .update({
-                                                          'reported': true
-                                                        });
-                                                      },
-                                                      child: const Text(
-                                                          "okay"),
-                                                    ),
-                                                  ],
-                                                ),
-                                          );
-                                        },
-                                        child: Icon(Icons.report_gmailerrorred)),
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (ctx) => AlertDialog(
+                                            title:
+                                            const Text("Report Post"),
+                                            content: const Text(
+                                                "Do you want to report Post?"),
+                                            actions: <Widget>[
+                                              ElevatedButton(
+                                                  style: ButtonStyle(
+                                                      backgroundColor:
+                                                      MaterialStatePropertyAll(
+                                                          Colors
+                                                              .green)),
+                                                  onPressed: () {
+                                                    Navigator.pop(
+                                                        context);
+                                                  },
+                                                  child: Text('cancel')),
+                                              ElevatedButton(
+                                                style: ButtonStyle(
+                                                    backgroundColor:
+                                                    MaterialStatePropertyAll(
+                                                        Colors.red)),
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                  FirebaseFirestore
+                                                      .instance
+                                                      .collection('posts')
+                                                      .doc(data?[index]
+                                                  ['id'])
+                                                      .update({
+                                                    'reported': true
+                                                  });
+                                                },
+                                                child: const Text("okay"),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                      child: Icon(
+                                          Icons.report_gmailerrorred),
+                                    ),
                                   ],
                                 ),
                               ),

@@ -1,3 +1,4 @@
+import 'package:blogui/BottomNavi/BotttomNavigatorBar.dart';
 import 'package:blogui/BottomNavi/profile.dart';
 import 'package:blogui/home/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -203,6 +204,7 @@ class _editprofileState extends State<editprofile> {
                             .collection('users')
                             .doc(CurrentUserID)
                             .update({
+                          'search':setSearchParam(_usernameController.text),
                           'username': _usernameController.text,
                           'about': _bioController.text,
                         });
