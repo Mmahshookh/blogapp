@@ -1,4 +1,3 @@
-import 'package:blogui/BottomNavi/profile.dart';
 import 'package:blogui/BottomNavi/profile/profile%20new.dart';
 import 'package:blogui/BottomNavi/search.dart';
 import 'package:blogui/home/HomeScreen.dart';

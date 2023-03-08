@@ -143,7 +143,8 @@ class _Health_catState extends State<Health_cat> {
                                                     children: [
                                                       InkWell(
                                                         onTap: (){
-                                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Edit_Post()));
+                                                          Navigator.push(context, MaterialPageRoute(builder: (context)=> Edit_Post(PostCat: data[index]["category"], PostImage: data[index]["image"], PostTitle: data[index]["title"], PostDiscription: data[index]["description"],
+                                                            postId: data[index].id,)));
                                                         },
                                                         child: Icon(
                                                           Icons.edit,

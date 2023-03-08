@@ -62,7 +62,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               "password":_passwordTextController.text,
                               'createdTime':DateTime.now(),
                               'about':'about',
-                              'profile': 'https://www.disneyplusinformer.com/wp-content/uploads/2021/06/Luca-Profile-Avatars-3.png'
+                              'profile': "https://cdn.dribbble.com/users/5534/screenshots/14230133/profile_4x.jpg"
                             }).then((value) => value.update({
                           'id':value.id
                         }));

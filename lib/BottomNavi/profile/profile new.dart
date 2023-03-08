@@ -1,9 +1,11 @@
 import 'package:blogui/BottomNavi/profile/edit_profile.dart';
+import 'package:blogui/home_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
+import '../../home/HomeScreen.dart';
 import '../../home/main.dart';
 import '../../login_new/signin.dart';
 import 'myblog_profile.dart';
@@ -45,8 +47,7 @@ class _Profile_newState extends State<Profile_new> {
                     children: [
                       Container(
                         color: Colors.grey,
-
-                        child: Image.network(
+                        child:Image.network(
                             "https://www.pixelstalk.net/wp-content/uploads/2016/05/Desktop-fall-backgrounds-images.jpg"),
                       ),
                       Positioned(

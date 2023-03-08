@@ -107,6 +107,149 @@ class _All_catState extends State<All_cat> {
                                     ]),
                                 child: Column(
                                   children: [
+                                   Padding(
+                                     padding: const EdgeInsets.all(8.0),
+                                     child: Row(
+                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                       children: [
+                                         Row(
+
+
+
+                                           children: [
+                                             Column(
+                                               children: [
+                                                 CircleAvatar(
+                                                   backgroundImage: NetworkImage(data[index]['postedbyProfile']),
+                                                 )
+                                               ],
+                                             ),
+                                             SizedBox(width: 10,),
+                                             Column(
+                                               crossAxisAlignment: CrossAxisAlignment.start,
+                                               children: [
+                                                 Text(data[index]['postedbyName'],style: TextStyle(
+                                                   fontWeight: FontWeight.w600
+                                                 ),),
+                                                 Text(data[index]['postedby'],style: TextStyle(
+                                                   color: Colors.grey
+                                                 ),)
+                                               ],
+                                             ),
+
+                                           ],
+                                         ),
+                                         IconButton(onPressed: (){
+
+                                           showDialog(
+                                             context: context,
+                                             builder: (ctx) => Padding(
+                                               padding:
+                                               const EdgeInsets.only(
+                                                   left: 190,
+                                                   bottom: 490),
+                                               child: AlertDialog(
+                                                 actions: [
+                                                   Row(
+                                                     children: [
+                                                       InkWell(
+                                                         onTap: () {
+                                                           Navigator.push(
+                                                               context,
+                                                               MaterialPageRoute(
+                                                                   builder: (context) =>
+                                                                       Edit_Post(
+                                                                         PostCat: data[index]["category"],
+                                                                         PostImage: data[index]["image"],
+                                                                         PostTitle: data[index]["title"],
+                                                                         PostDiscription: data[index]["description"],
+                                                                         postId: data[index].id,
+                                                                       )));
+                                                         },
+                                                         child: Icon(
+                                                           Icons.edit,
+                                                         ),
+                                                       ),
+                                                       Text(
+                                                         "  Edit",
+                                                         style: TextStyle(
+                                                             fontFamily:
+                                                             "Mulish-SemiBold"),
+                                                       ),
+                                                     ],
+                                                   ),
+                                                   SizedBox(
+                                                     height: 14,
+                                                   ),
+                                                   Row(
+                                                     children: [
+                                                       InkWell(
+                                                         onTap: () {
+                                                           showDialog(
+                                                             context:
+                                                             context,
+                                                             builder: (ctx) =>
+                                                                 AlertDialog(
+                                                                   title: const Text(
+                                                                       "Delete Post"),
+                                                                   content:
+                                                                   const Text(
+                                                                       "Do you want to delete Post?"),
+                                                                   actions: <
+                                                                       Widget>[
+                                                                     ElevatedButton(
+                                                                         style: ButtonStyle(
+                                                                             backgroundColor: MaterialStatePropertyAll(Colors
+                                                                                 .green)),
+                                                                         onPressed:
+                                                                             () {
+                                                                           Navigator.pop(context);
+                                                                         },
+                                                                         child:
+                                                                         Text('cancel')),
+                                                                     ElevatedButton(
+                                                                       style: ButtonStyle(
+                                                                           backgroundColor:
+                                                                           MaterialStatePropertyAll(Colors.red)),
+                                                                       onPressed:
+                                                                           () {
+                                                                         Navigator.pop(
+                                                                             context);
+                                                                         FirebaseFirestore
+                                                                             .instance
+                                                                             .collection('posts')
+                                                                             .doc(data?[index]['id'])
+                                                                             .delete();
+                                                                       },
+                                                                       child: const Text(
+                                                                           "okay"),
+                                                                     ),
+                                                                   ],
+                                                                 ),
+                                                           );
+                                                         },
+                                                         child: Icon(
+                                                           Icons.delete,
+                                                         ),
+                                                       ),
+                                                       Text(
+                                                         "  Delete",
+                                                         style: TextStyle(
+                                                             fontFamily:
+                                                             "Mulish-SemiBold"),
+                                                       ),
+                                                     ],
+                                                   ),
+                                                 ],
+                                               ),
+                                             ),
+                                           );
+                                         }, icon: Icon(Icons.more_vert))
+
+                                       ],
+                                     ),
+                                   ),
+
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Stack(
@@ -126,111 +269,7 @@ class _All_catState extends State<All_cat> {
                                                   fit: BoxFit.fitWidth,
                                                 )),
                                           ),
-                                          Positioned(
-                                            top: 10,
-                                            right: 10,
-                                            child: InkWell(
-                                              onTap: () {
-                                                showDialog(
-                                                  context: context,
-                                                  builder: (ctx) => Padding(
-                                                    padding:
-                                                    const EdgeInsets.only(
-                                                        left: 190,
-                                                        bottom: 490),
-                                                    child: AlertDialog(
-                                                      actions: [
-                                                        Row(
-                                                          children: [
-                                                            InkWell(
-                                                              onTap: (){
-                                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Edit_Post()));
-                                                              },
-                                                              child: Icon(
-                                                                Icons.edit,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              "  Edit",
-                                                              style: TextStyle(
-                                                                  fontFamily:
-                                                                  "Mulish-SemiBold"),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        SizedBox(
-                                                          height: 14,
-                                                        ),
-                                                        Row(
-                                                          children: [
-                                                            InkWell(
-                                                              onTap:() {
-                                                                showDialog(
-                                                                  context: context,
-                                                                  builder: (ctx) => AlertDialog(
-                                                                    title:
-                                                                    const Text("Delete Post"),
-                                                                    content: const Text(
-                                                                        "Do you want to delete Post?"),
-                                                                    actions: <Widget>[
-                                                                      ElevatedButton(
-                                                                          style: ButtonStyle(
-                                                                              backgroundColor:
-                                                                              MaterialStatePropertyAll(
-                                                                                  Colors
-                                                                                      .green)),
-                                                                          onPressed: () {
-                                                                            Navigator.pop(
-                                                                                context);
-                                                                          },
-                                                                          child: Text('cancel')),
-                                                                      ElevatedButton(
-                                                                        style: ButtonStyle(
-                                                                            backgroundColor:
-                                                                            MaterialStatePropertyAll(
-                                                                                Colors.red)),
-                                                                        onPressed: () {
-                                                                          Navigator.pop(context);
-                                                                          FirebaseFirestore
-                                                                              .instance
-                                                                              .collection('posts')
-                                                                              .doc(data?[index]
-                                                                          ['id'])
-                                                                              .delete();
-                                                                        },
-                                                                        child: const Text("okay"),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                );
-                                                              },
-                                                              child: Icon(
-                                                                Icons.delete,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              "  Delete",
-                                                              style: TextStyle(
-                                                                  fontFamily:
-                                                                  "Mulish-SemiBold"),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                );
-                                              },
-                                              child: CircleAvatar(
-                                                radius: 15,
-                                                backgroundColor: Colors.white54,
-                                                child: Icon(
-                                                  Icons.more_vert,
-                                                  color: Colors.black,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
+
                                         ],
                                       ),
                                     ),
@@ -242,9 +281,18 @@ class _All_catState extends State<All_cat> {
                                           const EdgeInsets.only(bottom: 10),
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text(likes.length.toString()),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Row(
+                                              children: [
+                                                Icon(Icons.favorite_outline_rounded,color: Colors.red,),
+                                                SizedBox(width: 3,),
+                                                Text(likes.length.toString()),
+                                              ],
+                                            ),
+                                          ),
                                           Text(
                                             data[index]["title"],
                                             overflow: TextOverflow.ellipsis,
@@ -253,51 +301,54 @@ class _All_catState extends State<All_cat> {
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.bold),
                                           ),
-                                          InkWell(
-                                            onTap: () {
-                                              showDialog(
-                                                context: context,
-                                                builder: (ctx) => AlertDialog(
-                                                  title:
-                                                      const Text("Report Post"),
-                                                  content: const Text(
-                                                      "Do you want to report Post?"),
-                                                  actions: <Widget>[
-                                                    ElevatedButton(
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: InkWell(
+                                              onTap: () {
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (ctx) => AlertDialog(
+                                                    title:
+                                                        const Text("Report Post"),
+                                                    content: const Text(
+                                                        "Do you want to report Post?"),
+                                                    actions: <Widget>[
+                                                      ElevatedButton(
+                                                          style: ButtonStyle(
+                                                              backgroundColor:
+                                                                  MaterialStatePropertyAll(
+                                                                      Colors
+                                                                          .green)),
+                                                          onPressed: () {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          child: Text('cancel')),
+                                                      ElevatedButton(
                                                         style: ButtonStyle(
                                                             backgroundColor:
                                                                 MaterialStatePropertyAll(
-                                                                    Colors
-                                                                        .green)),
+                                                                    Colors.red)),
                                                         onPressed: () {
-                                                          Navigator.pop(
-                                                              context);
+                                                          Navigator.pop(context);
+                                                          FirebaseFirestore
+                                                              .instance
+                                                              .collection('posts')
+                                                              .doc(data?[index]
+                                                                  ['id'])
+                                                              .update({
+                                                            'reported': true
+                                                          });
                                                         },
-                                                        child: Text('cancel')),
-                                                    ElevatedButton(
-                                                      style: ButtonStyle(
-                                                          backgroundColor:
-                                                              MaterialStatePropertyAll(
-                                                                  Colors.red)),
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                        FirebaseFirestore
-                                                            .instance
-                                                            .collection('posts')
-                                                            .doc(data?[index]
-                                                                ['id'])
-                                                            .update({
-                                                          'reported': true
-                                                        });
-                                                      },
-                                                      child: const Text("okay"),
-                                                    ),
-                                                  ],
-                                                ),
-                                              );
-                                            },
-                                            child: Icon(
-                                                Icons.report_gmailerrorred),
+                                                        child: const Text("okay"),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              },
+                                              child: Icon(
+                                                  Icons.report_gmailerrorred),
+                                            ),
                                           ),
                                         ],
                                       ),

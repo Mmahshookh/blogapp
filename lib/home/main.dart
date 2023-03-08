@@ -2,7 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../BottomNavi/BotttomNavigatorBar.dart';
-import '../BottomNavi/profile.dart';
 import '../BottomNavi/profile/myblog_profile.dart';
 import '../image_pick/add_post.dart';
 import '../image_pick/image_uploading.dart';

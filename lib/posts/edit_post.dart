@@ -13,11 +13,21 @@ import '../BottomNavi/BotttomNavigatorBar.dart';
 import '../login_new/re_textfield.dart';
 
 class Edit_Post extends StatefulWidget {
-  const Edit_Post({Key? key}) : super(key: key);
+  const Edit_Post({Key? key, required this.PostCat, required this.PostImage, required this.PostTitle, required this.PostDiscription, required this.postId,
+    }) : super(key: key);
+
+  final String PostCat;
+  final String PostImage;
+  final String PostTitle;
+  final String PostDiscription;
+  final String postId;
+
+
 
   @override
   State<Edit_Post> createState() => _Edit_PostState();
 }
+var postcategory;
 
 class _Edit_PostState extends State<Edit_Post> {
   String imageUrl = '';
@@ -26,6 +36,7 @@ class _Edit_PostState extends State<Edit_Post> {
   final storage = FirebaseStorage.instance;
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+
 
   Future getImage(ImageSource source) async {
     final image = await ImagePicker().pickImage(source: source);
@@ -75,7 +86,12 @@ class _Edit_PostState extends State<Edit_Post> {
   @override
   void initState() {
     super.initState();
-
+    
+    titleController.text = widget.PostTitle;
+    descriptionController.text = widget.PostDiscription;
+    categoryId=widget.PostCat;
+    imageUrl=widget.PostImage;
+postcategory = widget.PostCat;
     category.add({
       "val": 1,
       "label": "Educational",
@@ -93,7 +109,7 @@ class _Edit_PostState extends State<Edit_Post> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.grey.shade200,
         appBar: AppBar(
           backgroundColor: Colors.grey.shade900,
           leading: IconButton(
@@ -181,8 +197,8 @@ class _Edit_PostState extends State<Edit_Post> {
               ),
               FormHelper.dropDownWidget(
                   context,
-                  "Select Category",
-                  hintFontSize: 20,
+                  postcategory,
+                  hintFontSize: 14,
                   categoryId,
                   category, (onChangedVal) {
                 categoryData = onChangedVal;
@@ -192,6 +208,7 @@ class _Edit_PostState extends State<Edit_Post> {
                 print(
                     "Select Category:${category[int.parse(onChangedVal) - 1]['label']}");
               }, (onValidateVal) {
+                    onValidateVal = postcategory;
                 if (onValidateVal == null) {
                   return "Please Select Category";
                 }
@@ -248,7 +265,7 @@ class _Edit_PostState extends State<Edit_Post> {
                             ),
                             SizedBox(height: 30),
                             RoundButton(
-                                title: "Upload",
+                                title: "Update",
                                 onPress: () {
                                   if (imageUrl != '' &&
                                       titleController.text != "" &&
@@ -256,18 +273,15 @@ class _Edit_PostState extends State<Edit_Post> {
                                       categoryData != "") {
                                     FirebaseFirestore.instance
                                         .collection("posts")
-                                        .add({
+                                        .doc(widget.postId).update({
                                       'image': imageUrl,
                                       "title": titleController.text,
                                       "description": descriptionController.text,
                                       "category": category[count]['label'],
-                                      'likes': [],
-                                      "reported": false,
-                                      'postedby': CurrentUserEmail,
-                                      'postedbyName': CurrentUserName,
-                                      'postedbyProfile': CurrentUserImage
-                                    }).then((value) =>
-                                        value.update({'id': value.id}));
+
+
+
+                                    });
                                     const snackBar = SnackBar(
                                       content: Text('Uploaded'),
                                     );

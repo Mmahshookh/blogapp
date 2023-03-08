@@ -3,7 +3,6 @@ import 'package:blogui/home/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../BottomNavi/BotttomNavigatorBar.dart';
-import '../BottomNavi/profile.dart';
 import '../BottomNavi/profile/profile new.dart';
 import '../categories/University.dart';
 import '../categories/all.dart';
@@ -13,7 +12,6 @@ import '../categories/health.dart';
 import '../categories/sports.dart';
 import '../image_pick/image_uploading.dart';
 import '../other/constants.dart';
-
 
 class HomeScreen extends StatefulWidget {
   HomeScreen();
@@ -79,11 +77,10 @@ class _HomeScreenState extends State<HomeScreen> {
         leading: InkWell(
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => BottomNavBar(3)));
+                  MaterialPageRoute(builder: (context) => Profile_new()));
             },
             child: Padding(
-
-              padding: const EdgeInsets.only(left: 12,top: 10),
+              padding: const EdgeInsets.only(left: 12, top: 10),
               child: Container(
                 height: 80,
                 width: 80,
@@ -111,9 +108,11 @@ class _HomeScreenState extends State<HomeScreen> {
               CurrentUserImage = data?[0]['profile'];
 
               return Text(
-
                 'hey, ${data?[0]['username']}',
-                style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold),
               );
             }),
         actions: [
@@ -129,8 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       body: SingleChildScrollView(
         child: Container(
-          padding:
-              EdgeInsets.all(20),
+          padding: EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -328,7 +326,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 context,
                                                 MaterialPageRoute(
                                                   builder: (context) =>
-                                                      Profile_new(),
+                                                      Univercity_cat(),
                                                   // Univercity_cat(),
                                                 ));
                       },

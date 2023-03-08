@@ -179,11 +179,14 @@ class _Image_UploadState extends State<Image_Upload> {
                 height: 40,
               ),
               FormHelper.dropDownWidget(
+
+
                   context,
                   "Select Category",
                   hintFontSize: 20,
                   categoryId,
                   category, (onChangedVal) {
+
                 categoryData = onChangedVal;
                 categoryId = onChangedVal;
                 count = int.parse(onChangedVal) - 1;
@@ -191,6 +194,7 @@ class _Image_UploadState extends State<Image_Upload> {
                 print(
                     "Select Category:${category[int.parse(onChangedVal) - 1]['label']}");
               }, (onValidateVal) {
+
                 if (onValidateVal == null) {
                   return "Please Select Category";
                 }
