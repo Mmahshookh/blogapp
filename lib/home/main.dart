@@ -8,7 +8,6 @@ import '../image_pick/image_uploading.dart';
 import '../login_new/sign_up.dart';
 import '../login_new/signin.dart';
 import 'DetailsScreen.dart';
-import 'category_section.dart';
 import '../other/constants.dart';
 
 

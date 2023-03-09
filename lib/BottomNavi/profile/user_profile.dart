@@ -29,10 +29,10 @@ class _User_profileState extends State<User_profile> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Profile"),
-        backgroundColor: kHomeBGColor,
+        backgroundColor: Colors.black,
         elevation: 0,
       ),
-      backgroundColor: kHomeBGColor,
+      backgroundColor: Colors.black,
       body: StreamBuilder(
           stream: FirebaseFirestore.instance
               .collection('users')
@@ -220,8 +220,8 @@ class _User_profileState extends State<User_profile> {
                                                         Radius.circular(20))),
                                           ),
                                           Container(
-                                            height: height * 0.05,
-                                            width: width * 0.9,
+                                            height: 50,
+                                            width: 324,
                                             decoration: BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius: BorderRadius.only(
@@ -229,164 +229,255 @@ class _User_profileState extends State<User_profile> {
                                                         Radius.circular(20),
                                                     bottomRight:
                                                         Radius.circular(20))),
+
+
                                             child: Row(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
+                                              MainAxisAlignment.spaceBetween,
                                               children: [
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      postliked = !postliked;
-
-                                                      print('liked $postliked');
-                                                      if (postliked == true) {
-                                                        FirebaseFirestore
-                                                            .instance
-                                                            .collection('posts')
-                                                            .doc(
-                                                                Postdata?[index]
-                                                                    ['id'])
-                                                            .update({
-                                                          'likes': FieldValue
-                                                              .arrayUnion([
-                                                            CurrentUserID
-                                                          ])
-                                                        });
-
-                                                        setState(() {
-                                                          likeColor =
-                                                              Colors.red;
-                                                        });
-                                                      } else {
-                                                        FirebaseFirestore
-                                                            .instance
-                                                            .collection('posts')
-                                                            .doc(
-                                                                Postdata?[index]
-                                                                    ['id'])
-                                                            .update({
-                                                          'likes': FieldValue
-                                                              .arrayRemove([
-                                                            CurrentUserID
-                                                          ])
-                                                        });
-
-                                                        setState(() {
-                                                          likeColor =
-                                                              Colors.grey;
-                                                        });
-                                                      }
-                                                    });
-                                                  },
-                                                  child: Container(
-                                                    height: 40.0,
-                                                    width: 55.0,
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                            horizontal: 10.0),
-                                                    decoration: BoxDecoration(
-                                                      color: kBoxColor
-                                                          .withOpacity(0.5),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              50.0),
-                                                    ),
-                                                    child: Row(
-                                                      children: [
-                                                        Icon(
-                                                          Icons.favorite,
-                                                          size: 20,
-                                                          color: likeColor,
-                                                        ),
-                                                        SizedBox(
-                                                          width: 6.0,
-                                                        ),
-                                                        Text(
-                                                          (Postdata?[index]
-                                                                  ['likes'])
-                                                              .length
-                                                              .toString(),
-                                                          style: TextStyle(
-                                                            fontSize: 13.0,
-                                                            color: kDescBGColor
-                                                                .withOpacity(
-                                                                    0.75),
-                                                            fontFamily:
-                                                                "Mulish-SemiBold.ttf",
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                Padding(
+                                                  padding: const EdgeInsets.all(8.0),
+                                                  child: Row(
+                                                    children: [
+                                                      Icon(
+                                                        Icons
+                                                            .favorite_outline_rounded,
+                                                        color: Colors.red,
+                                                      ),
+                                                      SizedBox(
+                                                        width: 3,
+                                                      ),
+                                                      Text(likes.length.toString()),
+                                                    ],
                                                   ),
                                                 ),
-                                                Column(
-                                                  children: [
-                                                    // Text('data')
-                                                    Center(
-                                                      child: Text(
-                                                          Postdata?[index]
-                                                              ['title']),
-                                                    )
-
-                                                    // Text(data?[index]['description']),
-                                                  ],
+                                                Text(
+                                                  Postdata?[index]
+                                                  ['title'],
+                                                  overflow: TextOverflow.ellipsis,
+                                                  maxLines: 2,
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight: FontWeight.bold),
                                                 ),
-                                                InkWell(
-                                                  child: Icon(Icons
-                                                      .report_gmailerrorred),
-                                                  onTap: () {
-                                                    showDialog(
-                                                      context: context,
-                                                      builder: (ctx) =>
-                                                          AlertDialog(
-                                                        title: const Text(
-                                                            "Report Post"),
-                                                        content: const Text(
-                                                            "Do you want to report Post?"),
-                                                        actions: <Widget>[
-                                                          ElevatedButton(
+                                                Padding(
+                                                  padding: const EdgeInsets.all(8.0),
+                                                  child: InkWell(
+                                                    onTap: () {
+                                                      showDialog(
+                                                        context: context,
+                                                        builder: (ctx) => AlertDialog(
+                                                          title: const Text(
+                                                              "Report Post"),
+                                                          content: const Text(
+                                                              "Do you want to report Post?"),
+                                                          actions: <Widget>[
+                                                            ElevatedButton(
+                                                                style: ButtonStyle(
+                                                                    backgroundColor:
+                                                                    MaterialStatePropertyAll(
+                                                                        Colors
+                                                                            .green)),
+                                                                onPressed: () {
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                },
+                                                                child:
+                                                                Text('cancel')),
+                                                            ElevatedButton(
                                                               style: ButtonStyle(
                                                                   backgroundColor:
-                                                                      MaterialStatePropertyAll(
-                                                                          Colors
-                                                                              .green)),
+                                                                  MaterialStatePropertyAll(
+                                                                      Colors
+                                                                          .red)),
                                                               onPressed: () {
                                                                 Navigator.pop(
                                                                     context);
+                                                                FirebaseFirestore
+                                                                    .instance
+                                                                    .collection(
+                                                                    'posts')
+                                                                    .doc(data?[index]
+                                                                ['id'])
+                                                                    .update({
+                                                                  'reported': true
+                                                                });
                                                               },
-                                                              child: Text(
-                                                                  'cancel')),
-                                                          ElevatedButton(
-                                                            style: ButtonStyle(
-                                                                backgroundColor:
-                                                                    MaterialStatePropertyAll(
-                                                                        Colors
-                                                                            .red)),
-                                                            onPressed: () {
-                                                              Navigator.pop(
-                                                                  context);
-                                                              FirebaseFirestore
-                                                                  .instance
-                                                                  .collection(
-                                                                      'posts')
-                                                                  .doc(Postdata?[
-                                                                          index]
-                                                                      ['id'])
-                                                                  .update({
-                                                                'reported': true
-                                                              });
-                                                            },
-                                                            child: const Text(
-                                                                "okay"),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    );
-                                                  },
+                                                              child:
+                                                              const Text("okay"),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                    child: Icon(
+                                                        Icons.report_gmailerrorred),
+                                                  ),
                                                 ),
                                               ],
                                             ),
+
+
+                                            // Row(
+                                            //   mainAxisAlignment:
+                                            //       MainAxisAlignment
+                                            //           .spaceBetween,
+                                            //   children: [
+                                            //     InkWell(
+                                            //       onTap: () {
+                                            //         setState(() {
+                                            //           postliked = !postliked;
+                                            //
+                                            //           print('liked $postliked');
+                                            //           if (postliked == true) {
+                                            //             FirebaseFirestore
+                                            //                 .instance
+                                            //                 .collection('posts')
+                                            //                 .doc(
+                                            //                     Postdata?[index]
+                                            //                         ['id'])
+                                            //                 .update({
+                                            //               'likes': FieldValue
+                                            //                   .arrayUnion([
+                                            //                 CurrentUserID
+                                            //               ])
+                                            //             });
+                                            //
+                                            //             setState(() {
+                                            //               likeColor =
+                                            //                   Colors.red;
+                                            //             });
+                                            //           } else {
+                                            //             FirebaseFirestore
+                                            //                 .instance
+                                            //                 .collection('posts')
+                                            //                 .doc(
+                                            //                     Postdata?[index]
+                                            //                         ['id'])
+                                            //                 .update({
+                                            //               'likes': FieldValue
+                                            //                   .arrayRemove([
+                                            //                 CurrentUserID
+                                            //               ])
+                                            //             });
+                                            //
+                                            //             setState(() {
+                                            //               likeColor =
+                                            //                   Colors.grey;
+                                            //             });
+                                            //           }
+                                            //         });
+                                            //       },
+                                            //       child: Container(
+                                            //         height: 40.0,
+                                            //         width: 55.0,
+                                            //         padding:
+                                            //             EdgeInsets.symmetric(
+                                            //                 horizontal: 10.0),
+                                            //         decoration: BoxDecoration(
+                                            //           color: kBoxColor
+                                            //               .withOpacity(0.5),
+                                            //           borderRadius:
+                                            //               BorderRadius.circular(
+                                            //                   50.0),
+                                            //         ),
+                                            //         child: Row(
+                                            //           children: [
+                                            //             Icon(
+                                            //               Icons.favorite,
+                                            //               size: 20,
+                                            //               color: likeColor,
+                                            //             ),
+                                            //             SizedBox(
+                                            //               width: 6.0,
+                                            //             ),
+                                            //             Text(
+                                            //               (Postdata?[index]
+                                            //                       ['likes'])
+                                            //                   .length
+                                            //                   .toString(),
+                                            //               style: TextStyle(
+                                            //                 fontSize: 13.0,
+                                            //                 color: kDescBGColor
+                                            //                     .withOpacity(
+                                            //                         0.75),
+                                            //                 fontFamily:
+                                            //                     "Mulish-SemiBold.ttf",
+                                            //               ),
+                                            //             ),
+                                            //           ],
+                                            //         ),
+                                            //       ),
+                                            //     ),
+                                            //     Column(
+                                            //       children: [
+                                            //         // Text('data')
+                                            //         Center(
+                                            //           child: Text(
+                                            //               Postdata?[index]
+                                            //                   ['title']),
+                                            //         )
+                                            //
+                                            //         // Text(data?[index]['description']),
+                                            //       ],
+                                            //     ),
+                                            //     InkWell(
+                                            //       child: Icon(Icons
+                                            //           .report_gmailerrorred),
+                                            //       onTap: () {
+                                            //         showDialog(
+                                            //           context: context,
+                                            //           builder: (ctx) =>
+                                            //               AlertDialog(
+                                            //             title: const Text(
+                                            //                 "Report Post"),
+                                            //             content: const Text(
+                                            //                 "Do you want to report Post?"),
+                                            //             actions: <Widget>[
+                                            //               ElevatedButton(
+                                            //                   style: ButtonStyle(
+                                            //                       backgroundColor:
+                                            //                           MaterialStatePropertyAll(
+                                            //                               Colors
+                                            //                                   .green)),
+                                            //                   onPressed: () {
+                                            //                     Navigator.pop(
+                                            //                         context);
+                                            //                   },
+                                            //                   child: Text(
+                                            //                       'cancel')),
+                                            //               ElevatedButton(
+                                            //                 style: ButtonStyle(
+                                            //                     backgroundColor:
+                                            //                         MaterialStatePropertyAll(
+                                            //                             Colors
+                                            //                                 .red)),
+                                            //                 onPressed: () {
+                                            //                   Navigator.pop(
+                                            //                       context);
+                                            //                   FirebaseFirestore
+                                            //                       .instance
+                                            //                       .collection(
+                                            //                           'posts')
+                                            //                       .doc(Postdata?[
+                                            //                               index]
+                                            //                           ['id'])
+                                            //                       .update({
+                                            //                     'reported': true
+                                            //                   });
+                                            //                 },
+                                            //                 child: const Text(
+                                            //                     "okay"),
+                                            //               ),
+                                            //             ],
+                                            //           ),
+                                            //         );
+                                            //       },
+                                            //     ),
+                                            //   ],
+                                            // ),
+
+
                                           )
                                         ],
                                       ),

@@ -267,6 +267,7 @@ postcategory = widget.PostCat;
                             RoundButton(
                                 title: "Update",
                                 onPress: () {
+                                  Navigator.pop(context);
                                   if (imageUrl != '' &&
                                       titleController.text != "" &&
                                       descriptionController.text != "" &&
@@ -279,9 +280,8 @@ postcategory = widget.PostCat;
                                       "description": descriptionController.text,
                                       "category": category[count]['label'],
 
-
-
-                                    });
+                                    }
+                                    );
                                     const snackBar = SnackBar(
                                       content: Text('Uploaded'),
                                     );

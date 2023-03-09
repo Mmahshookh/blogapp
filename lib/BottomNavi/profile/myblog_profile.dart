@@ -18,7 +18,7 @@ class _My_blogsState extends State<My_blogs> {
     var size;
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.grey.shade900,
+          backgroundColor: Colors.black,
           title: Text("My Blog"),
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
@@ -26,6 +26,7 @@ class _My_blogsState extends State<My_blogs> {
                 Navigator.pop(context);
               }),
         ),
+        backgroundColor: Colors.black,
         body: StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance.collection("posts").where('postedby',isEqualTo: CurrentUserEmail).snapshots(),
             builder: (context, snapshot) {
@@ -42,7 +43,7 @@ class _My_blogsState extends State<My_blogs> {
                     List likes = data[index]['likes'];
                     return InkWell(
                       onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>detailedpost( data[index]["title"],  data[index]["description"],data[index]["image"],likes,data[index]['id'])));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>detailedpost( data[index]["title"],  data[index]["description"],data[index]["image"],likes,data[index]['id'],data[index]['postedbyProfile'])));
                       },
                       child: data[index]["image"] == ''
                           ? Padding(
@@ -50,7 +51,7 @@ class _My_blogsState extends State<My_blogs> {
                         child: Container(
                           height: 250,
                           decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Colors.white70,
                               // border: Border.all(),
                               borderRadius: BorderRadius.circular(20),
                               boxShadow: [

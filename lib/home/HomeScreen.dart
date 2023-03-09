@@ -1,5 +1,6 @@
 import 'package:blogui/home/DetailsScreen.dart';
 import 'package:blogui/home/main.dart';
+import 'package:blogui/widget/carousal%20slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../BottomNavi/BotttomNavigatorBar.dart';
@@ -32,7 +33,11 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   List catList = [
-    {"image": "assets/images1/allIma.png", "title": "All", "articles": "100"},
+    {
+      "image": "assets/images1/allIma.png",
+      "title": "All",
+      "articles": "100"
+    },
     {
       "image": "assets/images1/exam-results (3).png",
       "title": "Educational",
@@ -162,112 +167,10 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 10.0,
               ),
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => DetailsScreen(),
-                  ),
-                ),
-                child: Stack(
-                  children: [
-                    Hero(
-                      tag: "blogImage",
-                      child: Container(
-                        height: 220.0,
-                        width: size.width,
-                        decoration: BoxDecoration(
-                          color: kLightColor,
-                          borderRadius: BorderRadius.circular(24.0),
-                          image: DecorationImage(
-                              image: AssetImage("assets/images/Image1.jpg"),
-                              fit: BoxFit.cover),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: 24.0,
-                      right: 24.0,
-                      child: Hero(
-                        tag: "likes",
-                        child: Container(
-                          height: 34.0,
-                          width: 68.0,
-                          // padding: EdgeInsets.symmetric(horizontal: 10.0),
-                          decoration: BoxDecoration(
-                            color: kBoxColor.withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(50.0),
-                          ),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.favorite,
-                                size: 20,
-                                color: likeColor,
-                              ),
-                              SizedBox(
-                                width: 6.0,
-                              ),
-                              Text(
-                                "580",
-                                style: TextStyle(
-                                  fontSize: 13.0,
-                                  color: kLightColor.withOpacity(0.75),
-                                  fontFamily: "Mulish-SemiBold.ttf",
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 0.0,
-                      left: 0.0,
-                      right: 0.0,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 16.0, horizontal: 24.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Easy-to-grow Hardy Annuals",
-                              style: TextStyle(
-                                  fontSize: 20.0,
-                                  color: kLightColor,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 10.0,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(Icons.account_circle, size: 20),
-                                SizedBox(
-                                  width: 12.0,
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    "Muhammed Nihal",
-                                    style: TextStyle(
-                                      fontSize: 15.0,
-                                      color: kLightColor.withOpacity(0.8),
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "Mulish-SemiBold.ttf",
-                                    ),
-                                  ),
-                                ),
-                                Text("10 June 2022"),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+              SizedBox(
+                  height: 250, width: double.infinity, child: CarosalPage()),
+
+
               SizedBox(
                 height: 22.0,
               ),
@@ -327,7 +230,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 MaterialPageRoute(
                                                   builder: (context) =>
                                                       Univercity_cat(),
-                                                  // Univercity_cat(),
                                                 ));
                       },
                       child: Container(

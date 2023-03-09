@@ -1,3 +1,4 @@
+import 'package:blogui/BottomNavi/profile/user_profile.dart';
 import 'package:blogui/home/main.dart';
 import 'package:blogui/widget/round_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -20,6 +21,7 @@ class Image_Upload extends StatefulWidget {
 }
 
 class _Image_UploadState extends State<Image_Upload> {
+
   String imageUrl = '';
   int count = 0;
   File? _image;
@@ -90,11 +92,14 @@ class _Image_UploadState extends State<Image_Upload> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    var height = size.height;
+    var width = size.width;
     return Container(
       child: Scaffold(
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.black,
         appBar: AppBar(
-          backgroundColor: Colors.grey.shade900,
+          backgroundColor: Colors.black,
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
@@ -172,40 +177,54 @@ class _Image_UploadState extends State<Image_Upload> {
                 child: Text(
                   "UPLOAD PHOTO",
                   style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
+                      color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ),
               SizedBox(
                 height: 40,
               ),
-              FormHelper.dropDownWidget(
+              Container(
+                width: width*0.9,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20)
+                ),
+                child: FormHelper.dropDownWidget(
 
 
-                  context,
-                  "Select Category",
-                  hintFontSize: 20,
-                  categoryId,
-                  category, (onChangedVal) {
+                    borderColor: Colors.white,
+                    borderWidth: 5,
+                    borderFocusColor: Colors.white,
+                    borderRadius: 5,
+                    validationColor: Colors.white,
+                    hintColor: Colors.white
+,
 
-                categoryData = onChangedVal;
-                categoryId = onChangedVal;
-                count = int.parse(onChangedVal) - 1;
-                print("Select Category:$onChangedVal");
-                print(
-                    "Select Category:${category[int.parse(onChangedVal) - 1]['label']}");
-              }, (onValidateVal) {
+                    context,
+                    "Select Category",
+                    hintFontSize: 15,
 
-                if (onValidateVal == null) {
-                  return "Please Select Category";
-                }
-                return null;
-              },
-                  borderColor: Colors.black87,
-                  borderWidth: 5,
-                  borderFocusColor: Colors.white,
-                  borderRadius: 5,
-                  optionValue: "val",
-                  optionLabel: "label"),
+
+                    categoryId,
+                    category, (onChangedVal) {
+
+                  categoryData = onChangedVal;
+                  categoryId = onChangedVal;
+                  count = int.parse(onChangedVal) - 1;
+                  print("Select Category:$onChangedVal");
+                  print(
+                      "Select Category:${category[int.parse(onChangedVal) - 1]['label']}");
+                }, (onValidateVal) {
+
+                  if (onValidateVal == null) {
+                    return "Please Select Category";
+                  }
+                  return null;
+                },
+
+                    optionValue: "val",
+                    optionLabel: "label"),
+              ),
               SizedBox(
                 height: 30,
               ),
@@ -222,12 +241,26 @@ class _Image_UploadState extends State<Image_Upload> {
                           decoration: InputDecoration(
                             labelText: "Title",
                             hintText: "Enter post title",
-                            border: OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Colors.white
+                              ),
+                            ) ,
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Colors.white
+                              ),
+                            ) ,
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white
+                              ),
+                            ),
                             hintStyle: TextStyle(
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.normal),
                             labelStyle: TextStyle(
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.normal),
                           ),
                         ),
@@ -238,14 +271,24 @@ class _Image_UploadState extends State<Image_Upload> {
                           minLines: 2,
                           maxLines: 100,
                           decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Colors.white
+                              ),
+                            ) ,
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Colors.white
+                              ),
+                            ) ,
                             labelText: "Description",
                             hintText: "Enter post description",
                             border: OutlineInputBorder(),
                             hintStyle: TextStyle(
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.normal),
                             labelStyle: TextStyle(
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.normal),
                           ),
                         ),
@@ -268,7 +311,8 @@ class _Image_UploadState extends State<Image_Upload> {
                                   "reported": false,
                                   'postedby': CurrentUserEmail,
                                   'postedbyName': CurrentUserName,
-                                  'postedbyProfile': CurrentUserImage
+                                  'postedbyProfile': CurrentUserImage,
+                                  'date':DateTime.now()
                                 }).then((value) =>
                                         value.update({'id': value.id}));
                                 const snackBar = SnackBar(

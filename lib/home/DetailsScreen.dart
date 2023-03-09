@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import '../other/constants.dart';
 
 class DetailsScreen extends StatefulWidget {
-  DetailsScreen();
+  // DetailsScreen();
+  // final String image;
+  // final String image;
+  // final String image;
+  // final String image;
+  // final String image;
+  // final String image;
+
+
 
   @override
   State<DetailsScreen> createState() => _DetailsScreenState();

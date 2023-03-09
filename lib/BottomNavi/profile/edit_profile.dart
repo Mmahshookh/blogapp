@@ -10,6 +10,8 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import '../../home/HomeScreen.dart';
+import '../../other/constants.dart';
+import '../../other/constants.dart';
 
 class editprofile extends StatefulWidget {
   const editprofile({Key? key, required this.username, required this.about, required this.image})
@@ -96,12 +98,14 @@ class _editprofileState extends State<editprofile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pop(context);
             }),
       ),
+      backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -122,6 +126,9 @@ class _editprofileState extends State<editprofile> {
                         ),
                 ],
               ),
+            ),
+            SizedBox(
+              height: 10,
             ),
             InkWell(
               onTap: () {
@@ -156,10 +163,23 @@ class _editprofileState extends State<editprofile> {
                       );
                     });
               },
-              child: Text(
-                "Edit your profile photo",
-                style: TextStyle(color: Colors.blue),
-              ),
+               child:Container(
+                 height: 25,
+                 width: 78,
+                 margin: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                 decoration: BoxDecoration(
+                   borderRadius: BorderRadius.circular(30),
+                   color: kBottomNavBarColor.withOpacity(0.06),
+                 ),
+                 child: Padding(
+                   padding: const EdgeInsets.only(left: 10),
+                   child: Row(
+                     children: [
+                       Text("Edit profile",style: TextStyle(color: Colors.white70),),
+                     ],
+                   ),
+                 ),
+               ),
             ),
 
             // Text("Edit your profile photo",style: TextStyle(color: Colors.blue),),
@@ -172,29 +192,30 @@ class _editprofileState extends State<editprofile> {
                 children: [
                   TextField(
                     controller: _usernameController,
-                    style: const TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       fillColor: Colors.transparent,
                       filled: true,
                       labelText: 'Username',
-                      labelStyle: const TextStyle(color: Colors.black),
+                      labelStyle: const TextStyle(color: Colors.white),
                     ),
                   ),
                   TextField(
                     controller: _bioController,
                     maxLines: 2,
-                    style: const TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       fillColor: Colors.transparent,
                       filled: true,
                       labelText: 'About',
-                      labelStyle: const TextStyle(color: Colors.black),
+                      labelStyle: const TextStyle(color: Colors.white),
                     ),
                   ),
                   SizedBox(
                     height: 30,
                   ),
                   RoundedLoadingButton(
+                    color: Colors.white,
                       controller: RoundedLoadingButtonController(),
                       onPressed: () {
                         Navigator.pop(context);
@@ -214,7 +235,9 @@ class _editprofileState extends State<editprofile> {
 
                         RoundedLoadingButtonController().reset();
                       },
-                      child: Text('Save'))
+                      child: Text('Save',style: TextStyle(
+                        color: Colors.black
+                      )),)
                 ],
               ),
             )

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import '../../home/HomeScreen.dart';
 import '../../home/main.dart';
 import '../../login_new/signin.dart';
+import '../../other/constants.dart';
 import 'myblog_profile.dart';
 
 class Profile_new extends StatefulWidget {
@@ -21,6 +22,7 @@ class _Profile_newState extends State<Profile_new> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('users')
@@ -56,8 +58,8 @@ class _Profile_newState extends State<Profile_new> {
                             radius: 144 / 2,
                             backgroundColor: Colors.black,
                             backgroundImage: NetworkImage(
-                                "https://cdn.dribbble.com/users/5534/screenshots/14230133/profile_4x.jpg"
-                                // data?[0]['profile']
+                                // "https://cdn.dribbble.com/users/5534/screenshots/14230133/profile_4x.jpg"
+                                data?[0]['profile']
                             ),
                           )),
                     ],
@@ -69,7 +71,7 @@ class _Profile_newState extends State<Profile_new> {
                 Text(
                   CurrentUserName,
                   style: TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+                      fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white70),
                 ),
                 SizedBox(
                   height: 30,
@@ -77,14 +79,14 @@ class _Profile_newState extends State<Profile_new> {
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: Row(children: [
-                    Text("About",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                    Text("About",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white70),),
                   ],),
                 ),
                 SizedBox(height: 10,),
                 Padding(
                   padding: const EdgeInsets.only(left: 25),
                   child: Row(children: [
-                    Text(CurrentUserAbout,style: TextStyle(fontSize: 15),),
+                    Text(CurrentUserAbout,style: TextStyle(fontSize: 15,color: Colors.white70),),
                   ],),
                 ),
                 SizedBox(
@@ -101,19 +103,19 @@ class _Profile_newState extends State<Profile_new> {
                     margin: EdgeInsets.symmetric(horizontal: 10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
-                      color: Colors.black,
+                      color: kBottomNavBarColor.withOpacity(0.04),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 10),
                       child: Row(
                         children: [
-                          Icon(Icons.edit,color: Colors.white54,),
+                          Icon(Icons.edit,color: Colors.white70,),
                           SizedBox(
                             width: 20,
                           ),
-                          Text("Edit Profile",style: TextStyle(color: Colors.white54),),
+                          Text("Edit Profile",style: TextStyle(color: Colors.white70),),
                           Spacer(),
-                          Icon(Icons.arrow_right,color: Colors.white54,),
+                          Icon(Icons.arrow_right,color: Colors.white70,),
                         ],
                       ),
                     ),
@@ -131,19 +133,19 @@ class _Profile_newState extends State<Profile_new> {
                     margin: EdgeInsets.symmetric(horizontal: 10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
-                      color: Colors.black,
+                      color: kBottomNavBarColor.withOpacity(0.04),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 10),
                       child: Row(
                         children: [
-                          Icon(Icons.my_library_add,color: Colors.white54,),
+                          Icon(Icons.my_library_add,color: Colors.white70,),
                           SizedBox(
                             width: 20,
                           ),
-                          Text("My Blogs",style: TextStyle(color: Colors.white54),),
+                          Text("My Blogs",style: TextStyle(color: Colors.white70),),
                           Spacer(),
-                          Icon(Icons.arrow_right,color: Colors.white54,),
+                          Icon(Icons.arrow_right,color: Colors.white70,),
                         ],
                       ),
                     ),
@@ -162,19 +164,19 @@ class _Profile_newState extends State<Profile_new> {
                     margin: EdgeInsets.symmetric(horizontal: 10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
-                      color: Colors.black,
+                      color: kBottomNavBarColor.withOpacity(0.04),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 10),
                       child: Row(
                         children: [
-                          Icon(Icons.logout,color: Colors.white54,),
+                          Icon(Icons.logout,color: Colors.white70,),
                           SizedBox(
                             width: 20,
                           ),
                           Text("LogOut",style: TextStyle(color: Colors.red),),
                           Spacer(),
-                          Icon(Icons.arrow_right,color: Colors.white54,),
+                          Icon(Icons.arrow_right,color: Colors.white70,),
                         ],
                       ),
                     ),

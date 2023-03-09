@@ -48,6 +48,7 @@ dependencies:
   firebase_database: ^10.0.10
   rounded_loading_button: ^2.1.0
   carousel_slider: ^4.2.1
+  intl:
 dev_dependencies:
   flutter_test:
     sdk: flutter

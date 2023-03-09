@@ -7,12 +7,13 @@ import '../BottomNavi/profile/user_profile.dart';
 import '../other/constants.dart';
 
 class detailedpost extends StatefulWidget {
-  detailedpost(this.postTitle, this.PostDesctription, this.PostImage, this.likes, this.postid);
+  detailedpost(this.postTitle, this.PostDesctription, this.PostImage, this.likes, this.postid, this.image);
   final String postTitle;
   final String PostDesctription;
   final String PostImage;
   final List likes;
   final String postid;
+  final String image;
 
 
   @override
@@ -36,7 +37,7 @@ class _detailedpostState extends State<detailedpost> {
         List likes = data?[0]['likes'];
 
         return Scaffold(
-          backgroundColor: kDescBGColor,
+          backgroundColor: Colors.black,
           body: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -172,7 +173,7 @@ class _detailedpostState extends State<detailedpost> {
                           ),
                           Divider(
                             thickness: 1.0,
-                            color: kLightColor.withOpacity(0.08),
+                            color: Colors.white.withOpacity(0.9),
                             height: 32.0,
                           ),
                           StreamBuilder(
@@ -201,7 +202,7 @@ class _detailedpostState extends State<detailedpost> {
                                      decoration: BoxDecoration(
                                          borderRadius: BorderRadius.circular(50),
                                          image: DecorationImage(
-                                             image: NetworkImage(profiledata?[0]['profile']),
+                                             image: NetworkImage(widget.image),
                                              fit: BoxFit.cover)),
                                    ),
                                  ),
@@ -219,37 +220,13 @@ class _detailedpostState extends State<detailedpost> {
                                       ),
                                     ),
                                   ),
-                                  // Text.rich(
-                                  //   TextSpan(
-                                  //     children: [
-                                  //       WidgetSpan(
-                                  //         alignment: PlaceholderAlignment.middle,
-                                  //         child: Image.asset(
-                                  //           "assets/icons/Follow.png",
-                                  //           height: 15.0,
-                                  //           width: 15.0,
-                                  //         ),
-                                  //       ),
-                                  //       TextSpan(text: " "),
-                                  //       TextSpan(
-                                  //         text: "Follow",
-                                  //         style: TextStyle(
-                                  //           fontSize: 12.0,
-                                  //           color: kLightColor,
-                                  //           fontWeight: FontWeight.bold,
-                                  //           fontFamily: "Mulish-SemiBold.ttf",
-                                  //         ),
-                                  //       ),
-                                  //     ],
-                                  //   ),
-                                  // ),
                                 ],
                               );
                             }
                           ),
                           Divider(
                             thickness: 1.0,
-                            color: kLightColor.withOpacity(0.08),
+                            color: Colors.white.withOpacity(0.9),
                             height: 32.0,
                           ),
                           SizedBox(
@@ -263,48 +240,6 @@ class _detailedpostState extends State<detailedpost> {
                       ),
                     ),
                   ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 18.0,right: 18),
-                  child: Container(
-                    height: 64.0,
-                    width: size.width,
-                    margin: EdgeInsets.only(top: 16.0),
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    decoration: BoxDecoration(
-                      color: kCommentBGColor,
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: TextField(
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Write a comment....",
-                                hintStyle: TextStyle(
-                                  fontSize: 15.0,
-                                  color: kLightColor,
-                                  fontFamily: "Mulish-SemiBold.ttf",
-                                )),
-                          ),
-                        ),
-                        Container(
-                            height: 36.0,
-                            width: 34.0,
-                            padding: EdgeInsets.all(9.0),
-                            decoration: BoxDecoration(
-                              color: kLightColor,
-                              borderRadius: BorderRadius.circular(32.0),
-                            ),
-                            child: Icon(
-                              Icons.send,
-                              size: 20,
-                              color: likeColor,
-                            )),
-                      ],
-                    ),
-                  ),
                 ),
               ],
             ),

@@ -20,11 +20,11 @@ class _SearchState extends State<Search> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text("Search User"),
-        backgroundColor: kHomeBGColor,
+        backgroundColor: Colors.black,
         elevation: 0.0,
       ),
       body: Padding(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.only(top: 5),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +40,7 @@ class _SearchState extends State<Search> {
                       filled: true,
                       fillColor: Colors.grey[300],
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(15.0),
                         borderSide: BorderSide.none,
                       ),
                       prefixIcon: Icon(Icons.search),

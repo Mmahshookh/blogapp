@@ -40,7 +40,7 @@ class _Users_postState extends State<Users_post> {
           List likes = data?[0]['likes'];
 
           return Scaffold(
-            backgroundColor: kDescBGColor,
+            backgroundColor: Colors.black,
             body: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

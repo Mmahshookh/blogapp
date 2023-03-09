@@ -4,7 +4,6 @@ import 'package:blogui/home/HomeScreen.dart';
 import 'package:blogui/home/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import '../home/category_section.dart';
 import '../other/constants.dart';
 import '../other/demo.dart';
 
@@ -80,7 +79,7 @@ final List _children =[
               type: BottomNavigationBarType.fixed,
               showSelectedLabels: false,
               showUnselectedLabels: false,
-              backgroundColor: kBottomNavBarColor.withOpacity(0.08),
+              backgroundColor: kBottomNavBarColor.withOpacity(0.04),
               selectedItemColor: kLightColor,
               unselectedItemColor: kLightColor.withOpacity(0.4),
               onTap: onTabTapped,
