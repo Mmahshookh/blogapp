@@ -244,7 +244,7 @@ class _My_blogsState extends State<My_blogs> {
                                 ],
                               ),
                               SizedBox(
-                                height: 1,
+                                height: 1 ,
                               ),
                               Padding(
                                 padding:

@@ -15,16 +15,14 @@ class SignInScreen extends StatefulWidget {
   State<SignInScreen> createState() => _SignInScreenState();
 }
 
-
 class _SignInScreenState extends State<SignInScreen> {
-
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
 
   @override
   void initState() {
     _emailTextController.text = 'mmahshookh1@gmail.com';
-    _passwordTextController.text ="asdfghjkl";
+    _passwordTextController.text = "asdfghjkl";
     // TODO: implement initState
     super.initState();
   }
@@ -35,29 +33,37 @@ class _SignInScreenState extends State<SignInScreen> {
       backgroundColor: Colors.black,
       body: Container(
         child: SingleChildScrollView(
-          child:Padding(
-            padding: EdgeInsets.fromLTRB(20, MediaQuery.of(context).size.height*0.35/2, 30 , 0
-            ),
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+                20, MediaQuery.of(context).size.height * 0.35 / 2, 30, 0),
             child: Column(
               children: <Widget>[
-                logoWidget("assets/images/blogger.png"),
+                logoWidget("assets/icons/blogger.png"),
                 SizedBox(
                   height: 30,
                 ),
-                reUsableText("Enter Your Email", Icons.person, false, _emailTextController),
+                reUsableText("Enter Your Email", Icons.person, false,
+                    _emailTextController),
                 SizedBox(
                   height: 20,
                 ),
-                reUsableText("Enter Password", Icons.lock, false, _passwordTextController),
+                reUsableText("Enter Password", Icons.lock, false,
+                    _passwordTextController),
                 SizedBox(
                   height: 20,
                 ),
                 forgetPassword(context),
-                fireBaseButton(context, "Sign In", (){
-                  FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailTextController.text,
-                      password: _passwordTextController.text).then((value) {
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BottomNavBar(0)));
-                        CurrentUserEmail = _emailTextController.text;
+                fireBaseButton(context, "Sign In", () {
+                  FirebaseAuth.instance
+                      .signInWithEmailAndPassword(
+                          email: _emailTextController.text,
+                          password: _passwordTextController.text)
+                      .then((value) {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BottomNavBar(0)));
+                    CurrentUserEmail = _emailTextController.text;
                   }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
                   });
@@ -69,41 +75,44 @@ class _SignInScreenState extends State<SignInScreen> {
         ),
       ),
     );
-
   }
-  Row signUPOption(){
+
+  Row signUPOption() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Don't have a account?",
-          style: TextStyle(
-            color:Colors.white70
-          ),),
+        const Text(
+          "Don't have a account?",
+          style: TextStyle(color: Colors.white70),
+        ),
         GestureDetector(
           onTap: () {
-            Navigator.push(context,MaterialPageRoute(builder: (context) => SignUpScreen()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => SignUpScreen()));
           },
-          child: const Text(" Sign Up",style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold
-          ),),
+          child: const Text(
+            " Sign Up",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
         )
       ],
     );
   }
 }
 
-Widget forgetPassword(BuildContext context){
+Widget forgetPassword(BuildContext context) {
   return Container(
     width: MediaQuery.of(context).size.width,
     height: 35,
     alignment: Alignment.bottomRight,
     child: TextButton(
-      child: const Text("Forgot Password",style: TextStyle(color: Colors.white70),
+      child: const Text(
+        "Forgot Password",
+        style: TextStyle(color: Colors.white70),
         textAlign: TextAlign.right,
       ),
-      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ResetPassword())),
+      onPressed: () => Navigator.push(
+          context, MaterialPageRoute(builder: (context) => ResetPassword())),
     ),
   );
 }
-

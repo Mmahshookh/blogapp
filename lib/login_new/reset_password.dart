@@ -36,7 +36,7 @@ class _ResetPasswordState extends State<ResetPassword> {
             ),
             child: Column(
               children: <Widget>[
-                logoWidget("assets/images/blogger.png"),
+                logoWidget("assets/icons/blogger.png"),
                 SizedBox(
                   height: 30,
                 ),
