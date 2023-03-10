@@ -5,7 +5,7 @@ Image logoWidget(String imageName){
   fit: BoxFit.fill,
     width: 200,
   height: 200,
-  color: Colors.black,);
+  color: Colors.white,);
 }
 
 TextField reUsableText(String text,IconData icon,bool isPasswordType,TextEditingController controller){
@@ -16,10 +16,10 @@ TextField reUsableText(String text,IconData icon,bool isPasswordType,TextEditing
     autocorrect: !isPasswordType,
     cursorColor: Colors.white,
     style: TextStyle(
-      color: Colors.white.withOpacity(0.9),
+      color: Colors.white,
     ),
     decoration: InputDecoration(
-      prefixIcon: Icon(icon,color: Colors.white70,),
+      prefixIcon: Icon(icon,color: Colors.white,),
       labelText: text,
       filled: true,
       floatingLabelBehavior: FloatingLabelBehavior.never,

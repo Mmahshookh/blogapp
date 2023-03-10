@@ -24,15 +24,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.cyan,
+        backgroundColor: Colors.black,
         elevation: 0,
         title: const Text("Sign Up",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
       ),
-      backgroundColor: Colors.cyan,
+      backgroundColor: Colors.black,
       body: Container(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.fromLTRB(20, MediaQuery.of(context).size.height * 0.3/2, 20, 0),
+            padding: EdgeInsets.fromLTRB(20, MediaQuery.of(context).size.height * 0.4/2, 20, 0),
             child: Column(
               children: <Widget>[
                 logoWidget("assets/images/blogger.png"),

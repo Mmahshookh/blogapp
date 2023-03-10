@@ -21,7 +21,6 @@ class Image_Upload extends StatefulWidget {
 }
 
 class _Image_UploadState extends State<Image_Upload> {
-
   String imageUrl = '';
   int count = 0;
   File? _image;
@@ -132,7 +131,7 @@ class _Image_UploadState extends State<Image_Upload> {
                             child: Padding(
                               padding: EdgeInsets.only(right: 20, left: 20),
                               child: Image.asset('assets/images/Image2.jpg',
-                                  height: 200, width: 200),
+                                  height: 300, width: 320),
                             ),
                           ),
                   ],
@@ -184,30 +183,22 @@ class _Image_UploadState extends State<Image_Upload> {
                 height: 40,
               ),
               Container(
-                width: width*0.9,
+                width: 300,
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20)
-                ),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(100)),
                 child: FormHelper.dropDownWidget(
-
-
                     borderColor: Colors.white,
                     borderWidth: 5,
                     borderFocusColor: Colors.white,
                     borderRadius: 5,
-                    validationColor: Colors.white,
-                    hintColor: Colors.white
-,
-
+                    validationColor: Colors.black,
+                    hintColor: Colors.black,
                     context,
                     "Select Category",
                     hintFontSize: 15,
-
-
                     categoryId,
                     category, (onChangedVal) {
-
                   categoryData = onChangedVal;
                   categoryId = onChangedVal;
                   count = int.parse(onChangedVal) - 1;
@@ -215,15 +206,11 @@ class _Image_UploadState extends State<Image_Upload> {
                   print(
                       "Select Category:${category[int.parse(onChangedVal) - 1]['label']}");
                 }, (onValidateVal) {
-
                   if (onValidateVal == null) {
                     return "Please Select Category";
                   }
                   return null;
-                },
-
-                    optionValue: "val",
-                    optionLabel: "label"),
+                }, optionValue: "val", optionLabel: "label"),
               ),
               SizedBox(
                 height: 30,
@@ -236,25 +223,20 @@ class _Image_UploadState extends State<Image_Upload> {
                         child: Column(
                       children: [
                         TextFormField(
+                          style: TextStyle(color: Colors.white),
                           controller: titleController,
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
                             labelText: "Title",
                             hintText: "Enter post title",
                             enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.white
-                              ),
-                            ) ,
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.white
-                              ),
-                            ) ,
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
                             border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.white
-                              ),
+                              borderSide: BorderSide(color: Colors.white),
                             ),
                             hintStyle: TextStyle(
                                 color: Colors.white,
@@ -266,21 +248,18 @@ class _Image_UploadState extends State<Image_Upload> {
                         ),
                         SizedBox(height: 30),
                         TextFormField(
+                          style: TextStyle(color: Colors.white),
                           controller: descriptionController,
                           keyboardType: TextInputType.multiline,
                           minLines: 2,
                           maxLines: 100,
                           decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.white
-                              ),
-                            ) ,
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.white
-                              ),
-                            ) ,
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
                             labelText: "Description",
                             hintText: "Enter post description",
                             border: OutlineInputBorder(),
@@ -312,7 +291,7 @@ class _Image_UploadState extends State<Image_Upload> {
                                   'postedby': CurrentUserEmail,
                                   'postedbyName': CurrentUserName,
                                   'postedbyProfile': CurrentUserImage,
-                                  'date':DateTime.now()
+                                  'date': DateTime.now()
                                 }).then((value) =>
                                         value.update({'id': value.id}));
                                 const snackBar = SnackBar(
@@ -354,7 +333,7 @@ class _Image_UploadState extends State<Image_Upload> {
                                   }
                                 }
                               }
-                            })
+                            }),
                       ],
                     )),
                   ],

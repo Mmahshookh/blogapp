@@ -19,9 +19,9 @@ class _ResetPasswordState extends State<ResetPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyan,
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.cyan,
+        backgroundColor: Colors.black,
         elevation: 0,
         title: const Text("Reset Password",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
@@ -32,7 +32,7 @@ class _ResetPasswordState extends State<ResetPassword> {
             padding: EdgeInsets.fromLTRB(20, MediaQuery
                 .of(context)
                 .size
-                .height * 0.3 / 2, 30, 0
+                .height * 0.30 / 2, 30, 0
             ),
             child: Column(
               children: <Widget>[

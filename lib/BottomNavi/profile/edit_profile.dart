@@ -116,7 +116,7 @@ class _editprofileState extends State<editprofile> {
                 children: [
                   _images != null
                       ? CircleAvatar(
-                          radius: 100,
+                          radius: 80,
                           backgroundImage: FileImage(_images!),
                         )
                       : CircleAvatar(
