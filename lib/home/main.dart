@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../BottomNavi/BotttomNavigatorBar.dart';
 import '../BottomNavi/profile/myblog_profile.dart';
-import '../image_pick/add_post.dart';
+
 import '../image_pick/image_uploading.dart';
 import '../login_new/sign_up.dart';
 import '../login_new/signin.dart';
