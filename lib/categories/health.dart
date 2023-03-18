@@ -19,7 +19,7 @@ class _Health_catState extends State<Health_cat> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.black,
-          title: Text("All"),
+          title: Text("Health"),
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {

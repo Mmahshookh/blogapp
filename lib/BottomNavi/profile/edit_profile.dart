@@ -136,31 +136,44 @@ class _editprofileState extends State<editprofile> {
                     context: context,
                     builder: (buildContext) {
                       return AlertDialog(
-                        // backgroundColor: Colors.transparent,
-                        content: Container(
-                          // color: Colors.transparent,
-                          height: 100,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              IconButton(
-                                icon: Icon(Icons.photo_album),
-                                onPressed: () {
-                                  getImage(ImageSource.gallery);
-                                  Navigator.pop(context);
-                                },
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.camera),
-                                onPressed: () {
-                                  getImage(ImageSource.camera);
-                                  Navigator.pop(context);
-                                },
-                              ),
-                            ],
-                          ),
+                        icon: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              children: [
+                                InkWell(
+                                  onTap: (){
+                                    getImage(ImageSource.camera);
+                                    Navigator.pop(context);
+                                  },
+                                  child: Image.asset(
+                                    "assets/icons/picture.png",
+                                    height: 50,
+                                    width: 50,
+                                  ),
+                                ),
+                                Text("Camera"),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                InkWell(
+                                    onTap: () {
+                                      getImage(ImageSource.gallery);
+                                      Navigator.pop(context);
+                                    },
+                                    child: Image.asset(
+                                      "assets/icons/picture1.png",
+                                      height: 50,
+                                      width: 50,
+                                    )),
+                                Text("Gallery"),
+                              ],
+                            ),
+                          ],
                         ),
                       );
+
                     });
               },
                child:Container(

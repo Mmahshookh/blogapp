@@ -19,7 +19,7 @@ class _Sports_catState extends State<Sports_cat> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.black,
-          title: Text("All"),
+          title: Text("Sports"),
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {

@@ -19,7 +19,7 @@ class _EducationcatState extends State<Educationcat> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.black,
-          title: Text("All"),
+          title: Text("Educational"),
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {

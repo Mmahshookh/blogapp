@@ -19,7 +19,7 @@ class _Exam_catState extends State<Exam_cat> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.black,
-          title: Text("All"),
+          title: Text("Exam"),
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
