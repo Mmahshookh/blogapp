@@ -12,11 +12,11 @@ class RoundButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       clipBehavior: Clip.antiAlias,
       child: MaterialButton(
-        color: Colors.cyan,
+        color: Colors.white,
         height: 50,
-        minWidth: double.minPositive,
+        minWidth: 100,
         child: Text(title,style: TextStyle(
-          color: Colors.white
+          color: Colors.black
         ),),
         onPressed: onPress,
       ),
