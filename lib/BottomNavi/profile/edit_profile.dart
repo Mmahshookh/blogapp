@@ -3,14 +3,11 @@ import 'package:blogui/home/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 import 'package:path/path.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
-import '../../home/HomeScreen.dart';
-import '../../other/constants.dart';
 import '../../other/constants.dart';
 
 class editprofile extends StatefulWidget {
@@ -109,6 +106,9 @@ class _editprofileState extends State<editprofile> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(
+              height: 50,
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Row(

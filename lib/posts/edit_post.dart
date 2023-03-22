@@ -1,16 +1,12 @@
-import 'package:blogui/home/main.dart';
 import 'package:blogui/widget/round_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 import 'package:path/path.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
-import '../BottomNavi/BotttomNavigatorBar.dart';
-import '../login_new/re_textfield.dart';
 
 class Edit_Post extends StatefulWidget {
   const Edit_Post({Key? key, required this.PostCat, required this.PostImage, required this.PostTitle, required this.PostDiscription, required this.postId,
