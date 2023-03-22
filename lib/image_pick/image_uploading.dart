@@ -146,6 +146,7 @@ class _Image_UploadState extends State<Image_Upload> {
                       context: context,
                       builder: (buildContext) {
                         return AlertDialog(
+                          backgroundColor: Colors.transparent,
                           icon: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [

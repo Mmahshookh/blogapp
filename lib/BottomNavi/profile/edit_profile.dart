@@ -136,6 +136,7 @@ class _editprofileState extends State<editprofile> {
                     context: context,
                     builder: (buildContext) {
                       return AlertDialog(
+                        backgroundColor: Colors.transparent,
                         icon: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
