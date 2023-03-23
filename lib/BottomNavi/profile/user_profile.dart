@@ -102,13 +102,17 @@ class _User_profileState extends State<User_profile> {
                         SizedBox(
                           height: 10,
                         ),
-                        Text(
-                          "About",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "Mulish-SemiBold.ttf",
-                            fontSize: 23,
-                          ),
+                        Row(
+                          children: [
+                            Text(
+                              "About",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: "Mulish-SemiBold.ttf",
+                                fontSize: 23,
+                              ),
+                            ),
+                          ],
                         ),
                         SizedBox(
                           height: 8,

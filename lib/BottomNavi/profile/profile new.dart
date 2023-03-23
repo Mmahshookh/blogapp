@@ -82,15 +82,16 @@ class _Profile_newState extends State<Profile_new> {
                     Text("About",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white70),),
                   ],),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(height: 20,),
                 Padding(
                   padding: const EdgeInsets.only(left: 25),
                   child: Row(children: [
-                    Text(CurrentUserAbout,style: TextStyle(fontSize: 15,color: Colors.white70),),
+                    
+                    Expanded(child: Text(CurrentUserAbout,style: TextStyle(fontSize: 15,color: Colors.white70),)),
                   ],),
                 ),
                 SizedBox(
-                  height: 150,
+                  height: 10,
                 ),
                 InkWell(
                   onTap: (){

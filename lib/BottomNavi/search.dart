@@ -111,12 +111,3 @@ class _SearchState extends State<Search> {
   }
 }
 
-class MovieModel {
-  String? user_name;
-  int? movie_releae_year;
-  String? movie_poster_url;
-  double? likes;
-
-  MovieModel(this.user_name, this.movie_releae_year, this.likes,
-      this.movie_poster_url) {}
-}

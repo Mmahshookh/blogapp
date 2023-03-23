@@ -78,13 +78,15 @@ class _EducationcatState extends State<Educationcat> {
                               SizedBox(
                                 height: 10,
                               ),
-                              Text(
-                                data[index]["title"],
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
+                              Expanded(
+                                child: Text(
+                                  data[index]["title"],
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
                               SizedBox(
                                 height: 10,
