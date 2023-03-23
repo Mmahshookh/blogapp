@@ -1,4 +1,3 @@
-import 'package:blogui/home/DetailsScreen.dart';
 import 'package:blogui/home/main.dart';
 import 'package:blogui/widget/carousal%20slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

@@ -38,9 +38,8 @@ class _SignInScreenState extends State<SignInScreen> {
                 20, MediaQuery.of(context).size.height * 0.35 / 2, 30, 0),
             child: Column(
               children: <Widget>[
-                logoWidget("assets/icons/blogger.png"),
                 SizedBox(
-                  height: 30,
+                  height: 150,
                 ),
                 reUsableText("Enter Your Email", Icons.person, false,
                     _emailTextController),

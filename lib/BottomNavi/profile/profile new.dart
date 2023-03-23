@@ -84,13 +84,13 @@ class _Profile_newState extends State<Profile_new> {
                 ),
                 SizedBox(height: 10,),
                 Padding(
-                  padding: const EdgeInsets.only(left: 25),
+                  padding: const EdgeInsets.only(left: 20),
                   child: Row(children: [
-                    Text(CurrentUserAbout,style: TextStyle(fontSize: 15,color: Colors.white70),),
+                    Expanded(child: Text(CurrentUserAbout,style: TextStyle(fontSize: 15,color: Colors.white70),)),
                   ],),
                 ),
                 SizedBox(
-                  height: 150,
+                  height: 40,
                 ),
                 InkWell(
                   onTap: (){

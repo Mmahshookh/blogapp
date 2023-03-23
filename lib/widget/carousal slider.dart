@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../BottomNavi/profile/user_profile.dart';
-import '../home/DetailsScreen.dart';
+import '../home/main.dart';
 import '../other/constants.dart';
 
 
@@ -156,7 +156,7 @@ class _CarosalPageState extends State<CarosalPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               CircleAvatar(
-                                backgroundImage: NetworkImage(likedPost[index]['postedbyProfile']),
+                                backgroundImage: NetworkImage(CurrentUserImage),
                                 radius: 15,
                               ),
                               SizedBox(
