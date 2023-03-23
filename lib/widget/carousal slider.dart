@@ -102,7 +102,6 @@ class _CarosalPageState extends State<CarosalPage> {
                       child: Container(
                         height: 34.0,
                         width: 68.0,
-                        // padding: EdgeInsets.symmetric(horizontal: 10.0),
                         decoration: BoxDecoration(
                           color: kBoxColor.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(50.0),
@@ -142,51 +141,65 @@ class _CarosalPageState extends State<CarosalPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            likedPost[index]['title'],
-                            style: TextStyle(
-                                fontSize: 20.0,
-                                color: kLightColor,
-                                fontWeight: FontWeight.bold),
+                          Container(
+                            padding: EdgeInsets.only(left: 3,right: 5),
+                            decoration: BoxDecoration(
+                              color: kBoxColor.withOpacity(0.5),
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: Text(
+                              likedPost[index]['title'],
+                              style: TextStyle(
+                                  fontSize: 20.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                           SizedBox(
                             height: 10.0,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              CircleAvatar(
-                                backgroundImage: NetworkImage(likedPost[index]['postedbyProfile']),
-                                radius: 15,
-                              ),
-                              SizedBox(
-                                width: 12.0,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  likedPost[index]['postedby'],
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-                                    color: kLightColor.withOpacity(0.8),
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: "Mulish-SemiBold.ttf",
+                          Container(
+                            padding: EdgeInsets.only(right: 5),
+                            decoration: BoxDecoration(
+                              color: kBoxColor.withOpacity(0.5),
+                              borderRadius: BorderRadius.circular(50.0),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CircleAvatar(
+                                  backgroundImage: NetworkImage(likedPost[index]['postedbyProfile']),
+                                  radius: 15,
+                                ),
+                                SizedBox(
+                                  width: 12.0,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    likedPost[index]['postedby'],
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: Colors.black.withOpacity(0.9),
+                                      fontWeight: FontWeight.w300,
+                                      fontFamily: "Mulish-SemiBold.ttf",
+                                    ),
                                   ),
                                 ),
-                              ),
 
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Text(DateFormat('hh:mm:a').format(time),style: TextStyle(
-                                    color: Colors.white
-                                  ),),
-                                  Text(DateFormat.yMMMMd('en_US').format(time),style: TextStyle(
-                                    color: Colors.white
-                                  ),)
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(DateFormat('hh:mm:a').format(time),style: TextStyle(
+                                      color: Colors.black
+                                    ),),
+                                    Text(DateFormat.yMMMMd('en_US').format(time),style: TextStyle(
+                                      color: Colors.black
+                                    ),)
 
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
