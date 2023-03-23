@@ -102,25 +102,35 @@ class _User_profileState extends State<User_profile> {
                         SizedBox(
                           height: 10,
                         ),
-                        Text(
-                          "About",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "Mulish-SemiBold.ttf",
-                            fontSize: 23,
-                          ),
+                        Row(
+                          children: [
+                            Text(
+                              "About",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: "Mulish-SemiBold.ttf",
+                                fontSize: 23,
+                              ),
+                            ),
+                          ],
                         ),
                         SizedBox(
                           height: 8,
                         ),
-                        Text(
-                          CurrentUserAbout,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.normal,
-                            fontFamily: "Mulish-SemiBold.ttf",
-                          ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                CurrentUserAbout,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal,
+                                  fontFamily: "Mulish-SemiBold.ttf",
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -251,14 +261,16 @@ class _User_profileState extends State<User_profile> {
                                                     ],
                                                   ),
                                                 ),
-                                                Text(
-                                                  Postdata?[index]
-                                                  ['title'],
-                                                  overflow: TextOverflow.ellipsis,
-                                                  maxLines: 2,
-                                                  style: TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight: FontWeight.bold),
+                                                Expanded(
+                                                  child: Text(
+                                                    Postdata?[index]
+                                                    ['title'],
+                                                    overflow: TextOverflow.ellipsis,
+                                                    maxLines: 2,
+                                                    style: TextStyle(
+                                                        fontSize: 20,
+                                                        fontWeight: FontWeight.bold),
+                                                  ),
                                                 ),
                                                 Padding(
                                                   padding: const EdgeInsets.all(8.0),

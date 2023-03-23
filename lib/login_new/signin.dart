@@ -39,7 +39,7 @@ class _SignInScreenState extends State<SignInScreen> {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: 150,
+                  height: 180,
                 ),
                 reUsableText("Enter Your Email", Icons.person, false,
                     _emailTextController),

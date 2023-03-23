@@ -124,7 +124,7 @@ class _All_catState extends State<All_cat> {
                                                 children: [
                                                   CircleAvatar(
                                                     backgroundImage:
-                                                        NetworkImage(CurrentUserImage),
+                                       NetworkImage(data[index]['postedbyProfile']),
                                                   )
                                                 ],
                                               ),
