@@ -229,12 +229,9 @@ class _detailedpostState extends State<detailedpost> {
                             color: Colors.white.withOpacity(0.9),
                             height: 32.0,
                           ),
-                          SizedBox(
-                            height: 220,
-                            child: Text(
-                              widget.PostDesctription,
-                              style: TextStyle(fontSize: 15.0, color: kLightColor),
-                            ),
+                          Text(
+                            widget.PostDesctription,
+                            style: TextStyle(fontSize: 15.0, color: kLightColor),
                           ),
                         ],
                       ),

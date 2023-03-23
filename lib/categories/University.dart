@@ -19,7 +19,7 @@ class _Univercity_catState extends State<Univercity_cat> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.black,
-          title: Text("All"),
+          title: Text("University"),
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {

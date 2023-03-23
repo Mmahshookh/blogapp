@@ -12,6 +12,7 @@ import 'package:path/path.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
 import '../BottomNavi/BotttomNavigatorBar.dart';
 import '../login_new/re_textfield.dart';
+import '../other/constants.dart';
 
 class Image_Upload extends StatefulWidget {
   const Image_Upload({Key? key}) : super(key: key);
@@ -146,37 +147,63 @@ class _Image_UploadState extends State<Image_Upload> {
                       context: context,
                       builder: (buildContext) {
                         return AlertDialog(
-                          // backgroundColor: Colors.transparent,
-                          content: Container(
-                            // color: Colors.transparent,
-                            height: 100,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                IconButton(
-                                  icon: Icon(Icons.photo_album),
-                                  onPressed: () {
-                                    getImage(ImageSource.gallery);
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                IconButton(
-                                  icon: Icon(Icons.camera),
-                                  onPressed: () {
-                                    getImage(ImageSource.camera);
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                              ],
-                            ),
+                          backgroundColor: Colors.transparent,
+                          icon: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Column(
+                                children: [
+                                  InkWell(
+                                    onTap: (){
+                                      getImage(ImageSource.camera);
+                                      Navigator.pop(context);
+                                    },
+                                    child: Image.asset(
+                                      "assets/icons/picture.png",
+                                      height: 50,
+                                      width: 50,
+                                    ),
+                                  ),
+                                  Text("Camera"),
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  InkWell(
+                                      onTap: () {
+                                        getImage(ImageSource.gallery);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Image.asset(
+                                        "assets/icons/picture1.png",
+                                        height: 50,
+                                        width: 50,
+                                      )),
+                                  Text("Gallery"),
+                                ],
+                              ),
+                            ],
                           ),
                         );
+
                       });
                 },
-                child: Text(
-                  "UPLOAD PHOTO",
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
+                child:Container(
+                  height: 15,
+                  width: 100,
+                  margin: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: kBottomNavBarColor.withOpacity(0.06),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Row(
+                      children: [
+                        Text("Upload Photo",style: TextStyle(color: Colors.white70),),
+                      ],
+                    ),
+                  ),
                 ),
               ),
               SizedBox(

@@ -35,7 +35,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             padding: EdgeInsets.fromLTRB(20, MediaQuery.of(context).size.height * 0.4/2, 20, 0),
             child: Column(
               children: <Widget>[
-                logoWidget("assets/images/blogger.png"),
+                logoWidget("assets/icons/blogger.png"),
                const SizedBox(
                   height: 20,
                 ),
@@ -69,6 +69,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Navigator.push(context,MaterialPageRoute(builder: (context) => SignInScreen()));
                   }).onError((error, stackTrace) {
                     print("Error${error.toString()}");
+
                   });
                 }),
               ],
