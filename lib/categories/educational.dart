@@ -272,6 +272,7 @@ class _EducationcatState extends State<Educationcat> {
                                               Radius.circular(10)),
                                           image: DecorationImage(
                                             image: NetworkImage(
+
                                                 data[index]["image"]),
                                             fit: BoxFit.fitWidth,
                                           )),
@@ -300,13 +301,15 @@ class _EducationcatState extends State<Educationcat> {
                                         ],
                                       ),
                                     ),
-                                    Text(
-                                      data[index]["title"],
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 2,
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
+                                    Expanded(
+                                      child: Text(
+                                        data[index]["title"],
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 2,
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),

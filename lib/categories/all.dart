@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../BottomNavi/profile/edit_profile.dart';
+import '../home/main.dart';
 import '../other/constants.dart';
 import '../posts/edit_post.dart';
 
@@ -125,9 +126,7 @@ class _All_catState extends State<All_cat> {
                                                 children: [
                                                   CircleAvatar(
                                                     backgroundImage:
-                                                        NetworkImage(data[index]
-                                                            [
-                                                            'postedbyProfile']),
+                                       NetworkImage(data[index]['postedbyProfile']),
                                                   )
                                                 ],
                                               ),
@@ -205,13 +204,15 @@ class _All_catState extends State<All_cat> {
                                               ],
                                             ),
                                           ),
-                                          Text(
-                                            data[index]["title"],
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 2,
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold),
+                                          Expanded(
+                                            child: Text(
+                                              data[index]["title"],
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 2,
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),

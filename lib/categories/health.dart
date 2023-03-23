@@ -124,7 +124,7 @@ class _Health_catState extends State<Health_cat> {
                                         Column(
                                           children: [
                                             CircleAvatar(
-                                              backgroundImage: NetworkImage(data[index]['postedbyProfile']),
+                                              backgroundImage:  NetworkImage(data[index]['postedbyProfile']),
                                             )
                                           ],
                                         ),

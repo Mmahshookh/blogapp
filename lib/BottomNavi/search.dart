@@ -99,6 +99,7 @@ class _SearchState extends State<Search> {
                                     image: DecorationImage(
                                         image:
                                             NetworkImage(data?[index]['profile']),
+                                        //data?[0]['profile']
                                         fit: BoxFit.cover)),
                               ),
                             ),

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../BottomNavi/profile/user_profile.dart';
-import '../home/DetailsScreen.dart';
+
 import '../other/constants.dart';
 
 

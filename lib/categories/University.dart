@@ -124,7 +124,7 @@ class _Univercity_catState extends State<Univercity_cat> {
                                         Column(
                                           children: [
                                             CircleAvatar(
-                                              backgroundImage: NetworkImage(data[index]['postedbyProfile']),
+                                              backgroundImage:  NetworkImage(data[index]['postedbyProfile']),
                                             )
                                           ],
                                         ),
