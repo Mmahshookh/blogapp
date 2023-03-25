@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../BottomNavi/BotttomNavigatorBar.dart';
 import '../home/main.dart';
+import 'forgotpassword.dart';
 
 class Sign_upp extends StatefulWidget {
   const Sign_upp({Key? key}) : super(key: key);
@@ -60,7 +61,7 @@ class _Sign_uppState extends State<Sign_upp> {
                   )
               ),
               Container(
-                padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1,
+                padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.16,
                     right: 35,left: 35),
                 child: Form(
                   key: _formkey,
@@ -151,9 +152,17 @@ class _Sign_uppState extends State<Sign_upp> {
                           return null;
                         },
                       ),
-                      SizedBox(
-                        height: 50,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 180,top: 10),
+                        child: InkWell(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Forgott()));
+                            },child: Text("forgotpassword",style: TextStyle(color: Colors.white))),
                       ),
+                      SizedBox(
+                        height: height*0.03,
+                      ),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
