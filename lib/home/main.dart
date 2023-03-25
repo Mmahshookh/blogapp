@@ -5,6 +5,7 @@ import '../BottomNavi/BotttomNavigatorBar.dart';
 import '../BottomNavi/profile/myblog_profile.dart';
 
 import '../image_pick/image_uploading.dart';
+import '../login/sign_up.dart';
 import '../login_new/sign_up.dart';
 import '../login_new/signin.dart';
 
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "Mulish",
       ),
       // home:BottomNavBar(0),
-      home: SignInScreen(),
+      home: Sign_upp(),
       );
   }
 }
