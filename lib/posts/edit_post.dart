@@ -291,7 +291,7 @@ postcategory = widget.PostCat;
                                     }
                                     );
                                     const snackBar = SnackBar(
-                                      content: Text('Uploaded'),
+                                      content: Text('Updated'),
                                     );
                                     ScaffoldMessenger.of(context)
                                         .showSnackBar(snackBar);

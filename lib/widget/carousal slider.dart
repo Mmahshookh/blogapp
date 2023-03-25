@@ -75,7 +75,7 @@ class _CarosalPageState extends State<CarosalPage> {
             child: GestureDetector(
               onTap: () => Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => detailedpost(likedPost[index]['title'], likedPost[index]['description'], likedPost[index]['image'], likedPost[index]['likes'], likedPost[index].id,likedPost[index]['postedbyProfile']),
+                  builder: (context) => detailedpost(likedPost[index]['title'], likedPost[index]['description'], likedPost[index]['image'], likedPost[index]['likes'], likedPost[index].id,likedPost[index]['postedby']),
                 ),
               ),
               child: Stack(
@@ -167,9 +167,18 @@ class _CarosalPageState extends State<CarosalPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                CircleAvatar(
-                                  backgroundImage: NetworkImage(likedPost[index]['postedbyProfile']),
-                                  radius: 15,
+                                StreamBuilder<QuerySnapshot>(
+                                  stream: FirebaseFirestore.instance.collection("users").where("email",isEqualTo: likedPost[index]['postedby']).snapshots(),
+                                  builder: (context, snapshot) {
+                                    if(!snapshot.hasData){
+                                      return Text('');
+                                    }
+                                    var data1 = snapshot.data?.docs;
+                                    return CircleAvatar(
+                                      backgroundImage: NetworkImage(data1?[0]['profile']),
+                                      radius: 15,
+                                    );
+                                  }
                                 ),
                                 SizedBox(
                                   width: 12.0,
