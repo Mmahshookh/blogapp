@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import '../../home/HomeScreen.dart';
 import '../../home/main.dart';
 import '../../login_new/signin.dart';
+
 import '../../other/constants.dart';
 import 'myblog_profile.dart';
 
@@ -91,7 +92,7 @@ class _Profile_newState extends State<Profile_new> {
                   ],),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 60,
                 ),
                 InkWell(
                   onTap: (){

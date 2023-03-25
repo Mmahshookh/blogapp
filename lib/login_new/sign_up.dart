@@ -50,7 +50,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                fireBaseButton(context, "Sign Up", (){
+                fireBaseButton(context, "Sign Up", ()
+                {
                   FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailTextController.text,
                       password: _passwordTextController.text).then((value){
                         print("Created New Account");
@@ -67,10 +68,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         }));
                   Navigator.push(context,MaterialPageRoute(builder: (context) => SignInScreen()));
                   }).onError((error, stackTrace) {
-                    print("Error${error.toString()}");
+                    print("Error${error.toString()
+                    }");
 
-                  });
-                }),
+                  }
+                  );
+                }
+                ),
               ],
             ),
           ),

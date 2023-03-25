@@ -53,8 +53,9 @@ class _Sports_catState extends State<Sports_cat> {
                                     data[index]["image"],
                                     data[index]['likes'],
                                     data[index]['id'],
-                                    data[index]['postedbyProfile']
+                                    data[index]['postedby']
                                 )));
+
                       },
                       child: data[index]["image"] == ''
                           ? Padding(
@@ -114,149 +115,56 @@ class _Sports_catState extends State<Sports_cat> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                                   children: [
                                     Row(
-
-
-
                                       children: [
                                         Column(
                                           children: [
-                                            CircleAvatar(
-                                              backgroundImage: NetworkImage(data[index]['postedbyProfile']),
+                                            StreamBuilder<QuerySnapshot>(
+                                                stream: FirebaseFirestore.instance.collection('users').where('email',isEqualTo:data[index]['postedby'] ).snapshots(),
+                                                builder: (context, snapshot) {
+                                                  if(!snapshot.hasData){
+                                                    return CircularProgressIndicator(
+                                                      color: kHomeBGColor,
+                                                    );
+                                                  }
+                                                  var postData = snapshot.data?.docs;
+                                                  return CircleAvatar(
+                                                    backgroundImage:
+                                                    NetworkImage(postData?[0]['profile']),
+                                                  );
+                                                }
                                             )
                                           ],
                                         ),
-                                        SizedBox(width: 10,),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
                                         Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                           children: [
-                                            Text(data[index]['postedbyName'],style: TextStyle(
-                                                fontWeight: FontWeight.w600
-                                            ),),
-                                            Text(data[index]['postedby'],style: TextStyle(
-                                                color: Colors.grey
-                                            ),)
+                                            Text(
+                                              data[index]['postedbyName'],
+                                              style: TextStyle(
+                                                  fontWeight:
+                                                  FontWeight.w600),
+                                            ),
+                                            Text(
+                                              data[index]['postedby'],
+                                              style: TextStyle(
+                                                  color: Colors.grey),
+                                            )
                                           ],
                                         ),
-
                                       ],
                                     ),
-                                    IconButton(onPressed: (){
-
-                                      showDialog(
-                                        context: context,
-                                        builder: (ctx) => Padding(
-                                          padding:
-                                          const EdgeInsets.only(
-                                              left: 190,
-                                              bottom: 490),
-                                          child: AlertDialog(
-                                            actions: [
-                                              Row(
-                                                children: [
-
-                                                  Icon(
-                                                    Icons.edit,
-                                                  ),
-                                                  InkWell(
-                                                    onTap: () {
-                                                      Navigator.pop(context);
-                                                      Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                              builder: (context) =>
-                                                                  Edit_Post(
-                                                                    PostCat: data[index]["category"],
-                                                                    PostImage: data[index]["image"],
-                                                                    PostTitle: data[index]["title"],
-                                                                    PostDiscription: data[index]["description"],
-                                                                    postId: data[index].id,
-                                                                  )));
-                                                    },
-                                                    child: Text(
-                                                      "  Edit",
-                                                      style: TextStyle(
-                                                          fontFamily:
-                                                          "Mulish-SemiBold"),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              SizedBox(
-                                                height: 14,
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Icon(
-                                                    Icons.delete,
-                                                  ),
-                                                  InkWell(
-                                                    onTap: () {
-                                                      Navigator.pop(context);
-                                                      showDialog(
-                                                        context:
-                                                        context,
-                                                        builder: (ctx) =>
-                                                            AlertDialog(
-                                                              title: const Text(
-                                                                  "Delete Post"),
-                                                              content:
-                                                              const Text(
-                                                                  "Do you want to delete Post?"),
-                                                              actions: <
-                                                                  Widget>[
-                                                                ElevatedButton(
-                                                                    style: ButtonStyle(
-                                                                        backgroundColor: MaterialStatePropertyAll(Colors
-                                                                            .green)),
-                                                                    onPressed:
-                                                                        () {
-                                                                      Navigator.pop(context);
-                                                                    },
-                                                                    child:
-                                                                    Text('cancel')),
-                                                                ElevatedButton(
-                                                                  style: ButtonStyle(
-                                                                      backgroundColor:
-                                                                      MaterialStatePropertyAll(Colors.red)),
-                                                                  onPressed:
-                                                                      () {
-                                                                    Navigator.pop(
-                                                                        context);
-                                                                    FirebaseFirestore
-                                                                        .instance
-                                                                        .collection('posts')
-                                                                        .doc(data?[index]['id'])
-                                                                        .delete();
-                                                                  },
-                                                                  child: const Text(
-                                                                      "okay"),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                      );
-                                                    },
-                                                    child: Text(
-                                                      "  Delete",
-                                                      style: TextStyle(
-                                                          fontFamily:
-                                                          "Mulish-SemiBold"),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      );
-                                    }, icon: Icon(Icons.more_vert))
 
                                   ],
                                 ),
                               ),
-
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Stack(
@@ -276,7 +184,6 @@ class _Sports_catState extends State<Sports_cat> {
                                             fit: BoxFit.fitWidth,
                                           )),
                                     ),
-
                                   ],
                                 ),
                               ),
@@ -294,19 +201,27 @@ class _Sports_catState extends State<Sports_cat> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Row(
                                         children: [
-                                          Icon(Icons.favorite_outline_rounded,color: Colors.red,),
-                                          SizedBox(width: 3,),
+                                          Icon(
+                                            Icons
+                                                .favorite_outline_rounded,
+                                            color: Colors.red,
+                                          ),
+                                          SizedBox(
+                                            width: 3,
+                                          ),
                                           Text(likes.length.toString()),
                                         ],
                                       ),
                                     ),
-                                    Text(
-                                      data[index]["title"],
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 2,
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
+                                    Expanded(
+                                      child: Text(
+                                        data[index]["title"],
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 2,
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
@@ -315,8 +230,8 @@ class _Sports_catState extends State<Sports_cat> {
                                           showDialog(
                                             context: context,
                                             builder: (ctx) => AlertDialog(
-                                              title:
-                                              const Text("Report Post"),
+                                              title: const Text(
+                                                  "Report Post"),
                                               content: const Text(
                                                   "Do you want to report Post?"),
                                               actions: <Widget>[
@@ -330,24 +245,29 @@ class _Sports_catState extends State<Sports_cat> {
                                                       Navigator.pop(
                                                           context);
                                                     },
-                                                    child: Text('cancel')),
+                                                    child:
+                                                    Text('cancel')),
                                                 ElevatedButton(
                                                   style: ButtonStyle(
                                                       backgroundColor:
                                                       MaterialStatePropertyAll(
-                                                          Colors.red)),
+                                                          Colors
+                                                              .red)),
                                                   onPressed: () {
-                                                    Navigator.pop(context);
+                                                    Navigator.pop(
+                                                        context);
                                                     FirebaseFirestore
                                                         .instance
-                                                        .collection('posts')
+                                                        .collection(
+                                                        'posts')
                                                         .doc(data?[index]
                                                     ['id'])
                                                         .update({
                                                       'reported': true
                                                     });
                                                   },
-                                                  child: const Text("okay"),
+                                                  child:
+                                                  const Text("okay"),
                                                 ),
                                               ],
                                             ),

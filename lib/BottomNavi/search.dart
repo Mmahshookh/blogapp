@@ -63,9 +63,7 @@ class _SearchState extends State<Search> {
                               .snapshots(),
                       builder: (context, snapshot) {
                         if (!snapshot.hasData) {
-                          return CircularProgressIndicator(
-                            color: kHomeBGColor,
-                          );
+                          return Text('');
                         }
                         var data = snapshot.data?.docs;
                         return ListView.builder(

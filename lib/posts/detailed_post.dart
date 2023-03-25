@@ -7,13 +7,13 @@ import '../BottomNavi/profile/user_profile.dart';
 import '../other/constants.dart';
 
 class detailedpost extends StatefulWidget {
-  detailedpost(this.postTitle, this.PostDesctription, this.PostImage, this.likes, this.postid, this.image);
+  detailedpost(this.postTitle, this.PostDesctription, this.PostImage, this.likes, this.postid, this.email);
   final String postTitle;
   final String PostDesctription;
   final String PostImage;
   final List likes;
   final String postid;
-  final String image;
+  final String email;
 
 
   @override
@@ -196,14 +196,26 @@ class _detailedpostState extends State<detailedpost> {
                                    onTap:(){
                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>User_profile(email:data?[0]['postedby'] ,)));
                     },
-                                   child: Container(
-                                     height: 40,
-                                     width: 40,
-                                     decoration: BoxDecoration(
-                                         borderRadius: BorderRadius.circular(50),
-                                         image: DecorationImage(
-                                             image: NetworkImage(widget.image),
-                                             fit: BoxFit.cover)),
+                                   child: StreamBuilder<QuerySnapshot>(
+                                     stream: FirebaseFirestore.instance.collection('users').where('email',isEqualTo: widget.email).snapshots(),
+                                     builder: (context, snapshot) {
+                                       if(!snapshot.hasData){
+                                         return Center(
+                                           child: CircularProgressIndicator(),
+                                         );
+                                       }
+                                       var data1 = snapshot.data?.docs;
+                                       return Container(
+                                         height: 40,
+                                         width: 40,
+                                         decoration: BoxDecoration(
+                                             borderRadius: BorderRadius.circular(50),
+                                             image: DecorationImage(
+                                                 image: NetworkImage(data1?[0]['profile']),
+                                                 
+                                                 fit: BoxFit.cover)),
+                                       );
+                                     }
                                    ),
                                  ),
                                   SizedBox(

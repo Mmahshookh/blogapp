@@ -55,7 +55,7 @@ class _All_catState extends State<All_cat> {
                                     data[index]["image"],
                                     data[index]['likes'],
                                     data[index]['id'],
-                                    data[index]['postedbyProfile']
+                                    data[index]['postedby']
                                 )));
 
                       },
@@ -124,9 +124,20 @@ class _All_catState extends State<All_cat> {
                                             children: [
                                               Column(
                                                 children: [
-                                                  CircleAvatar(
-                                                    backgroundImage:
-                                       NetworkImage(data[index]['postedbyProfile']),
+                                                  StreamBuilder<QuerySnapshot>(
+                                                    stream: FirebaseFirestore.instance.collection('users').where('email',isEqualTo:data[index]['postedby'] ).snapshots(),
+                                                    builder: (context, snapshot) {
+                                                      if(!snapshot.hasData){
+                                                        return CircularProgressIndicator(
+                                                          color: kHomeBGColor,
+                                                        );
+                                                      }
+                                                      var postData = snapshot.data?.docs;
+                                                      return CircleAvatar(
+                                                        backgroundImage:
+                                       NetworkImage(postData?[0]['profile']),
+                                                      );
+                                                    }
                                                   )
                                                 ],
                                               ),

@@ -10,6 +10,7 @@ Image logoWidget(String imageName){
 
 TextField reUsableText(String text,IconData icon,bool isPasswordType,TextEditingController controller){
   return TextField(
+
     controller: controller,
     obscureText: isPasswordType,
     enableSuggestions: !isPasswordType,
@@ -19,8 +20,9 @@ TextField reUsableText(String text,IconData icon,bool isPasswordType,TextEditing
       color: Colors.white,
     ),
     decoration: InputDecoration(
+      label: Text(text),
       prefixIcon: Icon(icon,color: Colors.white,),
-      labelText: text,
+      // labelText: text,labelText
       filled: true,
       floatingLabelBehavior: FloatingLabelBehavior.never,
       fillColor: Colors.white.withOpacity(0.3),
