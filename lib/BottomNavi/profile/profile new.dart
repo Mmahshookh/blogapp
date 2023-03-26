@@ -161,7 +161,7 @@ class _Profile_newState extends State<Profile_new> {
                 InkWell(
                   onTap: () {
                     FirebaseAuth.instance.signOut();
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Sign_up()));
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Sign_in()));
                   },
                   child: Container(
                     height: 50,

@@ -56,7 +56,7 @@ class _Sign_upState extends State<Sign_up> {
         body: Stack(
           children: [
             Container(
-                padding: EdgeInsets.only(left: 35,top: 65),
+                padding: EdgeInsets.only(left: 35,top: 70),
                 child: Text("Create An\nAccount",
                   style: TextStyle(color: Colors.white,fontSize: 28),
                 )
@@ -71,7 +71,7 @@ class _Sign_upState extends State<Sign_up> {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 15,
+                        height: 45,
                       ),
                       TextFormField(
                         controller: _userNameTextController,
@@ -303,9 +303,6 @@ class _Sign_upState extends State<Sign_up> {
                                 },
                                 icon: InkWell(
                                     onTap: ()  async {
-
-
-
                                       try {
                                         UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
                                             email:_emailTextController.text,

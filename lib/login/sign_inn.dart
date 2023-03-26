@@ -104,9 +104,6 @@ class _Sign_inState extends State<Sign_in> {
                           }
                           return null;
                         },
-                        onSaved: (String? email) {
-                          _email = _email;
-                        },
                       ),
                       SizedBox(
                         height: 15,
@@ -201,6 +198,11 @@ class _Sign_inState extends State<Sign_in> {
                                                     password:
                                                         _passwordTextController
                                                             .text);
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => BottomNavBar(0)));
+                                        CurrentUserEmail = _emailTextController.text;
                                       } on FirebaseAuthException catch (e) {
                                         if (e.code == 'user-not-found') {
                                           print(
