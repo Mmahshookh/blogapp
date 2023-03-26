@@ -1,4 +1,4 @@
-import 'package:blogui/login/sign_in.dart';
+import 'package:blogui/login/sign_upp.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -7,35 +7,30 @@ import '../BottomNavi/BotttomNavigatorBar.dart';
 import '../home/main.dart';
 import 'forgotpassword.dart';
 
-class Sign_upp extends StatefulWidget {
-  const Sign_upp({Key? key}) : super(key: key);
+class Sign_in extends StatefulWidget {
+  const Sign_in({Key? key}) : super(key: key);
 
   @override
-  State<Sign_upp> createState() => _Sign_uppState();
+  State<Sign_in> createState() => _Sign_inState();
 }
 
-class _Sign_uppState extends State<Sign_upp> {
-  var size,height,width;
-  late String? _name,_email,_phone;
+class _Sign_inState extends State<Sign_in> {
+  var size, height, width;
+  late String? _name, _email, _phone;
 
   TextEditingController _emailTextController = TextEditingController();
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _password = TextEditingController();
-  TextEditingController _confirmpassword =TextEditingController();
-
+  TextEditingController _confirmpassword = TextEditingController();
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
-
-
-
-  bool passwordVisible=true;
-
+  bool passwordVisible = true;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    passwordVisible=true;
+    passwordVisible = true;
   }
 
   @override
@@ -46,37 +41,47 @@ class _Sign_uppState extends State<Sign_upp> {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/back.jpg"),fit: BoxFit.cover
-          )
-      ),
+              image: AssetImage("assets/images/back.jpg"), fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
           child: Column(
             children: [
               Container(
-                  padding: EdgeInsets.only(left: 35, top: height*0.15),
-                  child: Text("Welcome\n Back",
-                    style: TextStyle(color: Colors.white, fontSize: 33),
-                  )
+                padding: EdgeInsets.only(top: height * 0.10),
+                child: Text(
+                  "Welcome,",
+                  style: TextStyle(color: Colors.white, fontSize: 28),
+                ),
+              ),
+              SizedBox(
+                height: height * 0.01,
               ),
               Container(
-                padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.16,
-                    right: 35,left: 35),
+                child: Text(
+                  "Glad to see you,",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.20,
+                    right: 35,
+                    left: 35),
                 child: Form(
                   key: _formkey,
                   child: Column(
                     children: [
-
                       TextFormField(
                         controller: _emailTextController,
                         keyboardType: TextInputType.text,
                         style: TextStyle(color: Colors.white),
                         decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.cyan)
-                            ),
-
+                                borderSide: BorderSide(color: Colors.cyan)),
                             fillColor: Colors.transparent,
                             filled: true,
                             labelText: 'Email',
@@ -87,25 +92,24 @@ class _Sign_uppState extends State<Sign_upp> {
                             ),
                             hintStyle: TextStyle(color: Colors.white),
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10)
-                            )
-                        ),
+                                borderRadius: BorderRadius.circular(10))),
                         validator: (String? value) {
-                          if(value.toString().isEmpty)
-                          {
+                          if (value.toString().isEmpty) {
                             return "Please enter Email";
                           }
-                          if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value!))
-                          {
+                          if (!RegExp(
+                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                              .hasMatch(value!)) {
                             return "Please enter a valid Email";
                           }
                           return null;
-                        },onSaved: (String? email){
-                        _email = _email;
-                      },
+                        },
+                        onSaved: (String? email) {
+                          _email = _email;
+                        },
                       ),
                       SizedBox(
-                        height: 35,
+                        height: 15,
                       ),
                       TextFormField(
                         controller: _passwordTextController,
@@ -114,15 +118,13 @@ class _Sign_uppState extends State<Sign_upp> {
                         style: TextStyle(color: Colors.white),
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.cyan)
-                          ),
+                              borderSide: BorderSide(color: Colors.cyan)),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                           ),
                           hintStyle: TextStyle(color: Colors.white),
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)
-                          ),
+                              borderRadius: BorderRadius.circular(10)),
                           fillColor: Colors.transparent,
                           filled: true,
                           labelText: 'Password',
@@ -135,7 +137,7 @@ class _Sign_uppState extends State<Sign_upp> {
                                 : Icons.visibility_off),
                             onPressed: () {
                               setState(
-                                    () {
+                                () {
                                   passwordVisible = !passwordVisible;
                                 },
                               );
@@ -145,30 +147,36 @@ class _Sign_uppState extends State<Sign_upp> {
                         ),
                         textInputAction: TextInputAction.done,
                         validator: (String? value) {
-                          if(value.toString().isEmpty)
-                          {
+                          if (value.toString().isEmpty) {
                             return "Please enter password";
                           }
                           return null;
                         },
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 180,top: 10),
+                        padding: const EdgeInsets.only(left: 180, top: 10),
                         child: InkWell(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Forgott()));
-                            },child: Text("forgotpassword",style: TextStyle(color: Colors.white))),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Forgott()));
+                            },
+                            child: Text("forgotpassword",
+                                style: TextStyle(color: Colors.white))),
                       ),
                       SizedBox(
-                        height: height*0.03,
+                        height: height * 0.03,
                       ),
-
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Sign In", style: TextStyle(
-                              color: Colors.cyanAccent,
-                              fontSize: 25, fontWeight: FontWeight.w700),
+                          Text(
+                            "Sign In",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.w700),
                           ),
                           CircleAvatar(
                             radius: 30,
@@ -176,68 +184,50 @@ class _Sign_uppState extends State<Sign_upp> {
                             child: IconButton(
                                 color: Colors.white,
                                 onPressed: () {
-                                  if(_formkey.currentState!.validate())
-                                  {
+                                  if (_formkey.currentState!.validate()) {
                                     return;
-                                  }
-                                  else
-                                  {
+                                  } else {
                                     print("Unsuccessfull");
                                   }
                                 },
                                 icon: InkWell(
                                     onTap: () async {
-
-
                                       try {
-                                        UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                                            email: _emailTextController.text,
-                                            password: _passwordTextController.text
-                                        );
+                                        UserCredential userCredential =
+                                            await FirebaseAuth.instance
+                                                .signInWithEmailAndPassword(
+                                                    email: _emailTextController
+                                                        .text,
+                                                    password:
+                                                        _passwordTextController
+                                                            .text);
                                       } on FirebaseAuthException catch (e) {
                                         if (e.code == 'user-not-found') {
-                                          print('No user found for that email.');
+                                          print(
+                                              'No user found for that email.');
 
                                           const snackBar = SnackBar(
-                                            content: Text('No user found for that email'),
+                                            content: Text(
+                                                'No user found for that email'),
                                           );
 
-                                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
-
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(snackBar);
                                         } else if (e.code == 'wrong-password') {
-                                          print('Wrong password provided for that user.');
+                                          print(
+                                              'Wrong password provided for that user.');
 
                                           const snackBar = SnackBar(
-                                            content: Text('Wrong password provided for that user'),
+                                            content: Text(
+                                                'Wrong password provided for that user'),
                                           );
 
-                                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(snackBar);
                                         }
                                       }
-
-
-
-
-
-                                      // FirebaseAuth.instance
-                                      //     .signInWithEmailAndPassword(
-                                      //     email: _emailTextController.text,
-                                      //     password: _passwordTextController.text)
-                                      //     .then((value) {
-                                      //   Navigator.pushReplacement(
-                                      //       context,
-                                      //       MaterialPageRoute(
-                                      //           builder: (context) => BottomNavBar(0)));
-                                      //   CurrentUserEmail = _emailTextController.text;
-                                      // }).onError((error, stackTrace) {
-                                      //   print("Error ${error.toString()}");
-                                      // });
                                     },
-
-                                    child: Icon(Icons.arrow_forward))
-                            ),
+                                    child: Icon(Icons.arrow_forward))),
                           ),
                         ],
                       ),
@@ -245,27 +235,32 @@ class _Sign_uppState extends State<Sign_upp> {
                         height: 50,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          TextButton(
-                              onPressed: () {
-                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Sign_inn()));
-                              },
-                              child: Text("Sign Up", style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                fontSize: 18,
-                                color: Colors.cyan,
-                              ),)
+                          Padding(
+                            padding: const EdgeInsets.only(left: 42),
+                            child: Text(
+                              "Don't have an account ?",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w100),
+                            ),
                           ),
-                          TextButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, "forgot");
-                              }, child: Text(
-                            "Forgot Password", style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            fontSize: 18,
-                            color: Colors.cyan,
-                          ),)
+                          Padding(
+                            padding: EdgeInsets.only(left: 5),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Sign_up()));
+                              },
+                              child: Text(
+                                "Sign Up",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w900),
+                              ),
+                            ),
                           )
                         ],
                       )

@@ -1,16 +1,25 @@
-import 'package:blogui/login/sign_up.dart';
+
+
+
+
+
+
+
+
+import 'package:blogui/login/sign_inn.dart';
+import 'package:blogui/login/sign_upp.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class Sign_inn extends StatefulWidget {
-  const Sign_inn({Key? key}) : super(key: key);
+class Sign_up extends StatefulWidget {
+  const Sign_up({Key? key}) : super(key: key);
 
   @override
-  State<Sign_inn> createState() => _Sign_innState();
+  State<Sign_up> createState() => _Sign_upState();
 }
 
-class _Sign_innState extends State<Sign_inn> {
+class _Sign_upState extends State<Sign_up> {
 
 
 
@@ -47,9 +56,9 @@ class _Sign_innState extends State<Sign_inn> {
         body: Stack(
           children: [
             Container(
-                padding: EdgeInsets.only(left: 35,top: 80),
+                padding: EdgeInsets.only(left: 35,top: 65),
                 child: Text("Create An\nAccount",
-                  style: TextStyle(color: Colors.white,fontSize: 33),
+                  style: TextStyle(color: Colors.white,fontSize: 28),
                 )
             ),
             Container(
@@ -62,7 +71,7 @@ class _Sign_innState extends State<Sign_inn> {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 60,
+                        height: 15,
                       ),
                       TextFormField(
                         controller: _userNameTextController,
@@ -130,6 +139,7 @@ class _Sign_innState extends State<Sign_inn> {
                         height: 15,
                       ),
                       TextFormField(
+
                         controller: _emailTextController,
                         keyboardType: TextInputType.text,
                         style: TextStyle(color: Colors.white),
@@ -137,6 +147,7 @@ class _Sign_innState extends State<Sign_inn> {
                             enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.cyan)
                             ),
+
 
                             fillColor: Colors.transparent,
                             filled: true,
@@ -312,7 +323,7 @@ class _Sign_innState extends State<Sign_inn> {
                                               }).then((value) => value.update({
                                             'id':value.id
                                           }));
-                                          Navigator.push(context,MaterialPageRoute(builder: (context) => Sign_upp()));
+                                          Navigator.push(context,MaterialPageRoute(builder: (context) => Sign_in()));
                                           return value;
                                         });
                                       } on FirebaseAuthException catch (e) {
@@ -341,32 +352,6 @@ class _Sign_innState extends State<Sign_inn> {
                                         print(e);
                                       }
 
-
-
-
-
-                                      //
-                                      // FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailTextController.text,
-                                      //     password: _passwordTextController.text).then((value){
-                                      //   print("Created New Account");
-                                      //   FirebaseFirestore.instance.collection('users').add(
-                                      //       {
-                                      //         'username':_userNameTextController.text,
-                                      //         'email':_emailTextController.text,
-                                      //         "password":_passwordTextController.text,
-                                      //         'createdTime':DateTime.now(),
-                                      //         'about':'about',
-                                      //         'profile': "https://cdn.dribbble.com/users/5534/screenshots/14230133/profile_4x.jpg"
-                                      //       }).then((value) => value.update({
-                                      //     'id':value.id
-                                      //   }));
-                                      //   Navigator.push(context,MaterialPageRoute(builder: (context) => Sign_upp()));
-                                      // }).onError((error, stackTrace) {
-                                      //   print("Error${error.toString()
-                                      //   }");
-                                      //
-                                      // }
-                                      // );
                                     },
                                     child: Icon(Icons.arrow_forward))
                             ),
@@ -378,15 +363,21 @@ class _Sign_innState extends State<Sign_inn> {
                       ),
                       Row(
                         children: [
-                          TextButton(
-                              onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Sign_upp()));
-                              }, child: Text(
-                            "Sign In",style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            fontSize: 18,
-                            color: Colors.cyan,
-                          ),)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 15,left: 42),
+                            child: Text("Don't have an account ?",style: TextStyle(
+                                color: Colors.white,fontWeight: FontWeight.w100
+                            ),),                         ),
+                          Padding(
+                            padding:  EdgeInsets.only(top: 15,left: 5),
+                            child: InkWell(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Sign_in()));
+                              },
+                              child: Text("Sign Up",style: TextStyle(
+                                  color: Colors.white,fontWeight: FontWeight.w900
+                              ),),
+                            ),
                           )
                         ],
                       )

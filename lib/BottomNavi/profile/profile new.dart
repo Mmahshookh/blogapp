@@ -7,9 +7,10 @@ import 'package:flutter/material.dart';
 
 import '../../home/HomeScreen.dart';
 import '../../home/main.dart';
-import '../../login/sign_up.dart';
-import '../../login_new/signin.dart';
 
+
+import '../../login/sign_inn.dart';
+import '../../login/sign_upp.dart';
 import '../../other/constants.dart';
 import 'myblog_profile.dart';
 
@@ -160,7 +161,7 @@ class _Profile_newState extends State<Profile_new> {
                 InkWell(
                   onTap: () {
                     FirebaseAuth.instance.signOut();
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Sign_upp()));
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Sign_up()));
                   },
                   child: Container(
                     height: 50,
