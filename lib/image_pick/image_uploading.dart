@@ -113,19 +113,14 @@ class _Image_UploadState extends State<Image_Upload> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     imageUrl != ''
-                        ? Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              height: 300,
-                              width: 320,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: NetworkImage(imageUrl))),
-                            ),
-                          )
+                        ? Container(
+                          height: 300,
+                          width: 320,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: NetworkImage(imageUrl))),
+                        )
                         : Container(
-                            // height: 300,
-                            // width:360,
                             child: Padding(
                               padding: EdgeInsets.only(right: 20, left: 20),
                               child: InkWell(
