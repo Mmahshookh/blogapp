@@ -28,7 +28,10 @@ class _EducationcatState extends State<Educationcat> {
         ),
         backgroundColor: Colors.black,
         body: StreamBuilder<QuerySnapshot>(
-            stream: FirebaseFirestore.instance.collection("posts").where("category",isEqualTo: "Educational").snapshots(),
+            stream: FirebaseFirestore.instance
+                .collection("posts")
+                .where("category", isEqualTo: "Educational")
+                .snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
                 return Center(
@@ -53,165 +56,29 @@ class _EducationcatState extends State<Educationcat> {
                                     data[index]["image"],
                                     data[index]['likes'],
                                     data[index]['id'],
-                                    data[index]['postedby']
-                                )));
-
+                                    data[index]['postedby'])));
                       },
                       child: data[index]["image"] == ''
                           ? Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 250,
-                          decoration: BoxDecoration(
-                              color: Colors.white70,
-                              // border: Border.all(),
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                    offset: Offset(0, 0),
-                                    spreadRadius: 1,
-                                    blurRadius: 5,
-                                    color: Colors.grey)
-                              ]),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  data[index]["title"],
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
-                          : Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white70,
-                              // border: Border.all(),
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                    offset: Offset(0, 0),
-                                    spreadRadius: 1,
-                                    blurRadius: 5,
-                                    color: Colors.grey)
-                              ]),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                height: 250,
+                                decoration: BoxDecoration(
+                                    color: Colors.white70,
+                                    // border: Border.all(),
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          offset: Offset(0, 0),
+                                          spreadRadius: 1,
+                                          blurRadius: 5,
+                                          color: Colors.grey)
+                                    ]),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Row(
-                                      children: [
-                                        Column(
-                                          children: [
-                                            StreamBuilder<QuerySnapshot>(
-                                                stream: FirebaseFirestore.instance.collection('users').where('email',isEqualTo:data[index]['postedby'] ).snapshots(),
-                                                builder: (context, snapshot) {
-                                                  if(!snapshot.hasData){
-                                                    return CircularProgressIndicator(
-                                                      color: kHomeBGColor,
-                                                    );
-                                                  }
-                                                  var postData = snapshot.data?.docs;
-                                                  return CircleAvatar(
-                                                    backgroundImage:
-                                                    NetworkImage(postData?[0]['profile']),
-                                                  );
-                                                }
-                                            )
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              data[index]['postedbyName'],
-                                              style: TextStyle(
-                                                  fontWeight:
-                                                  FontWeight.w600),
-                                            ),
-                                            Text(
-                                              data[index]['postedby'],
-                                              style: TextStyle(
-                                                  color: Colors.grey),
-                                            )
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Stack(
-                                  children: [
-                                    Container(
-                                      height: 200,
-                                      width: 350,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.only(
-                                              topLeft:
-                                              Radius.circular(10),
-                                              topRight:
-                                              Radius.circular(10)),
-                                          image: DecorationImage(
-                                            image: NetworkImage(
-                                                data[index]["image"]),
-                                            fit: BoxFit.fitWidth,
-                                          )),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Padding(
-                                padding:
-                                const EdgeInsets.only(bottom: 10),
-                                child: Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            Icons
-                                                .favorite_outline_rounded,
-                                            color: Colors.red,
-                                          ),
-                                          SizedBox(
-                                            width: 3,
-                                          ),
-                                          Text(likes.length.toString()),
-                                        ],
-                                      ),
+                                    SizedBox(
+                                      height: 10,
                                     ),
                                     Expanded(
                                       child: Text(
@@ -223,67 +90,210 @@ class _EducationcatState extends State<Educationcat> {
                                             fontWeight: FontWeight.bold),
                                       ),
                                     ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          : Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white70,
+                                    // border: Border.all(),
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          offset: Offset(0, 0),
+                                          spreadRadius: 1,
+                                          blurRadius: 5,
+                                          color: Colors.grey)
+                                    ]),
+                                child: Column(
+                                  children: [
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: InkWell(
-                                        onTap: () {
-                                          showDialog(
-                                            context: context,
-                                            builder: (ctx) => AlertDialog(
-                                              title: const Text(
-                                                  "Report Post"),
-                                              content: const Text(
-                                                  "Do you want to report Post?"),
-                                              actions: <Widget>[
-                                                ElevatedButton(
-                                                    style: ButtonStyle(
-                                                        backgroundColor:
-                                                        MaterialStatePropertyAll(
-                                                            Colors
-                                                                .green)),
-                                                    onPressed: () {
-                                                      Navigator.pop(
-                                                          context);
-                                                    },
-                                                    child:
-                                                    Text('cancel')),
-                                                ElevatedButton(
-                                                  style: ButtonStyle(
-                                                      backgroundColor:
-                                                      MaterialStatePropertyAll(
-                                                          Colors
-                                                              .red)),
-                                                  onPressed: () {
-                                                    Navigator.pop(
-                                                        context);
-                                                    FirebaseFirestore
-                                                        .instance
-                                                        .collection(
-                                                        'posts')
-                                                        .doc(data?[index]
-                                                    ['id'])
-                                                        .update({
-                                                      'reported': true
-                                                    });
-                                                  },
-                                                  child:
-                                                  const Text("okay"),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  StreamBuilder<QuerySnapshot>(
+                                                      stream: FirebaseFirestore
+                                                          .instance
+                                                          .collection('users')
+                                                          .where('email',
+                                                              isEqualTo: data[
+                                                                      index]
+                                                                  ['postedby'])
+                                                          .snapshots(),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        if (!snapshot.hasData) {
+                                                          return CircularProgressIndicator(
+                                                            color: kHomeBGColor,
+                                                          );
+                                                        }
+                                                        var postData =
+                                                            snapshot.data?.docs;
+                                                        return CircleAvatar(
+                                                          backgroundImage:
+                                                              NetworkImage(
+                                                                  postData?[0][
+                                                                      'profile']),
+                                                        );
+                                                      })
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    data[index]['postedbyName'],
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                  Text(
+                                                    data[index]['postedby'],
+                                                    style: TextStyle(
+                                                        color: Colors.grey),
+                                                  )
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Stack(
+                                        children: [
+                                          Container(
+                                            height: 200,
+                                            width: 350,
+                                            decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(10),
+                                                    topRight:
+                                                        Radius.circular(10)),
+                                                image: DecorationImage(
+                                                  image: NetworkImage(
+                                                      data[index]["image"]),
+                                                  fit: BoxFit.fitWidth,
+                                                )),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 10),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Row(
+                                              children: [
+                                                Icon(
+                                                  Icons
+                                                      .favorite_outline_rounded,
+                                                  color: Colors.red,
                                                 ),
+                                                SizedBox(
+                                                  width: 3,
+                                                ),
+                                                Text(likes.length.toString()),
                                               ],
                                             ),
-                                          );
-                                        },
-                                        child: Icon(
-                                            Icons.report_gmailerrorred),
+                                          ),
+                                          Expanded(
+                                            child: Text(
+                                              data[index]["title"],
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 2,
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: InkWell(
+                                              onTap: () {
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (ctx) => AlertDialog(
+                                                    title: const Text(
+                                                        "Report Post"),
+                                                    content: const Text(
+                                                        "Do you want to report Post?"),
+                                                    actions: <Widget>[
+                                                      ElevatedButton(
+                                                          style: ButtonStyle(
+                                                              backgroundColor:
+                                                                  MaterialStatePropertyAll(
+                                                                      Colors
+                                                                          .green)),
+                                                          onPressed: () {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          child:
+                                                              Text('cancel')),
+                                                      ElevatedButton(
+                                                        style: ButtonStyle(
+                                                            backgroundColor:
+                                                                MaterialStatePropertyAll(
+                                                                    Colors
+                                                                        .red)),
+                                                        onPressed: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                          FirebaseFirestore
+                                                              .instance
+                                                              .collection(
+                                                                  'posts')
+                                                              .doc(data?[index]
+                                                                  ['id'])
+                                                              .update({
+                                                            'reported': true
+                                                          });
+                                                        },
+                                                        child:
+                                                            const Text("okay"),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              },
+                                              child: Icon(
+                                                  Icons.report_gmailerrorred),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                      ),
+                            ),
                     );
                   });
             }));

@@ -111,7 +111,7 @@ class _Image_UploadState extends State<Image_Upload> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 15),
+                padding: const EdgeInsets.only(top: 1),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -120,7 +120,7 @@ class _Image_UploadState extends State<Image_Upload> {
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
                               height: 300,
-                              width: 340,
+                              width: 320,
                               decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: NetworkImage(imageUrl))),
@@ -131,8 +131,56 @@ class _Image_UploadState extends State<Image_Upload> {
                             // width:360,
                             child: Padding(
                               padding: EdgeInsets.only(right: 20, left: 20),
-                              child: Image.asset('assets/images/Image2.jpg',
-                                  height: 300, width: 320),
+                              child: InkWell(
+                                onTap: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (buildContext) {
+                                        return AlertDialog(
+                                          backgroundColor: Colors.transparent,
+                                          icon: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  InkWell(
+                                                    onTap: (){
+                                                      getImage(ImageSource.camera);
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Image.asset(
+                                                      "assets/icons/picture.png",
+                                                      height: 50,
+                                                      width: 50,
+                                                    ),
+                                                  ),
+                                                  Text("Camera"),
+                                                ],
+                                              ),
+                                              Column(
+                                                children: [
+                                                  InkWell(
+                                                      onTap: () {
+                                                        getImage(ImageSource.gallery);
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: Image.asset(
+                                                        "assets/icons/picture1.png",
+                                                        height: 50,
+                                                        width: 50,
+                                                      )),
+                                                  Text("Gallery"),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        );
+
+                                      });
+                                },
+                                child: Image.asset('assets/images1/image upload.jpeg',
+                                    height: 300, width: 320),
+                              ),
                             ),
                           ),
                   ],
@@ -140,74 +188,6 @@ class _Image_UploadState extends State<Image_Upload> {
               ),
               SizedBox(
                 height: 10,
-              ),
-              InkWell(
-                onTap: () {
-                  showDialog(
-                      context: context,
-                      builder: (buildContext) {
-                        return AlertDialog(
-                          backgroundColor: Colors.transparent,
-                          icon: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Column(
-                                children: [
-                                  InkWell(
-                                    onTap: (){
-                                      getImage(ImageSource.camera);
-                                      Navigator.pop(context);
-                                    },
-                                    child: Image.asset(
-                                      "assets/icons/picture.png",
-                                      height: 50,
-                                      width: 50,
-                                    ),
-                                  ),
-                                  Text("Camera"),
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  InkWell(
-                                      onTap: () {
-                                        getImage(ImageSource.gallery);
-                                        Navigator.pop(context);
-                                      },
-                                      child: Image.asset(
-                                        "assets/icons/picture1.png",
-                                        height: 50,
-                                        width: 50,
-                                      )),
-                                  Text("Gallery"),
-                                ],
-                              ),
-                            ],
-                          ),
-                        );
-
-                      });
-                },
-                child:Container(
-                  height: 15,
-                  width: 100,
-                  margin: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: kBottomNavBarColor.withOpacity(0.06),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: Row(
-                      children: [
-                        Text("Upload Photo",style: TextStyle(color: Colors.white70),),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 40,
               ),
               Container(
                 width: 300,
@@ -240,7 +220,7 @@ class _Image_UploadState extends State<Image_Upload> {
                 }, optionValue: "val", optionLabel: "label"),
               ),
               SizedBox(
-                height: 30,
+                height: 50,
               ),
               Container(
                 padding: const EdgeInsets.all(5),
