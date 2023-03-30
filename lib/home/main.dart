@@ -10,8 +10,6 @@ import '../image_pick/image_uploading.dart';
 
 import '../login/sign_inn.dart';
 import '../login/sign_upp.dart';
-import '../login_new/sign_up.dart';
-import '../login_new/signin.dart';
 
 import '../other/constants.dart';
 
