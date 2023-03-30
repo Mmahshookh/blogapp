@@ -45,7 +45,16 @@ class _My_blogsState extends State<My_blogs> {
                     List likes = data[index]['likes'];
                     return InkWell(
                       onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>detailedpost( data[index]["title"],  data[index]["description"],data[index]["image"],likes,data[index]['id'],data[index]['postedbyProfile'])));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>detailedpost(
+                            data[index]["title"],
+                            data[index]["description"],
+                            data[index]["image"],
+                            data[index]['likes'],
+                            data[index]['id'],
+                            data[index]['postedby']
+                        )));
+                            // detailedpost( data[index]["title"],  data[index]["description"],data[index]["image"],likes,data[index]['id'],
+                            //     data[index]['postedbyProfile'])));
                       },
                       child: data[index]["image"] == ''
                           ? Padding(
