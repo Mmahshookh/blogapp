@@ -1,4 +1,5 @@
 import 'package:blogui/home/main.dart';
+import 'package:blogui/other/constants.dart';
 import 'package:blogui/posts/detailed_post.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -230,7 +231,13 @@ class _My_blogsState extends State<My_blogs> {
                                                       ),
                                                     );
                                                   },
-                                                  icon: Icon(Icons.more_vert)),
+                                                  icon: Container(
+                                                    height: 30,width: 30,
+                                                      padding: EdgeInsets.only(left: 3,right: 5),
+                                                      decoration: BoxDecoration(
+                                                        color: kBoxColor.withOpacity(0.9),
+                                                        borderRadius: BorderRadius.circular(10.0),
+                                                      ),child: Icon(Icons.more_vert))),
                                             ],
                                           ),
 
