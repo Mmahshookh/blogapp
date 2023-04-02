@@ -21,7 +21,7 @@ class _CarosalPageState extends State<CarosalPage> {
     FirebaseFirestore.instance.collection('posts').snapshots().listen((event) {
       likedPost.clear();
       event.docs.forEach((element) {
-        if (element['likes'].length != 1 && element['likes'].length != 2) {
+        if (element['likes'].length != 0 && element['likes'].length != 1) {
           if (likedPost.length <= 10) {
             print(element.id);
             likedPost.add(element);
@@ -139,6 +139,8 @@ class _CarosalPageState extends State<CarosalPage> {
                               color: kBoxColor.withOpacity(0.5),
                               borderRadius: BorderRadius.circular(10.0),
                             ),
+
+                            height: 25,
                             child: Text(
                               likedPost[index]['title'],
                               style: TextStyle(
