@@ -254,6 +254,8 @@ postcategory = widget.PostCat;
                         child: Column(
                           children: [
                             TextFormField(
+                              maxLines: 2,
+                              maxLength: 45,
                               style: TextStyle(color: Colors.white),
                               controller: titleController,
                               keyboardType: TextInputType.text,
@@ -274,8 +276,6 @@ postcategory = widget.PostCat;
                               style: TextStyle(color: Colors.white),
                               controller: descriptionController,
                               keyboardType: TextInputType.multiline,
-                              minLines: 2,
-                              maxLines: 100,
                               decoration: InputDecoration(
                                 labelText: "Description",
                                 hintText: "Enter post description",
