@@ -27,7 +27,8 @@ class _Health_catState extends State<Health_cat> {
               }),
         ),
         backgroundColor: Colors.black,
-        body: StreamBuilder<QuerySnapshot>(
+        body:
+        StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance.collection("posts").where("category",isEqualTo: "Health").snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
