@@ -205,6 +205,7 @@ class _editprofileState extends State<editprofile> {
               child: Column(
                 children: [
                   TextFormField(
+                    maxLength: 35,
                     controller: _usernameController,
                     keyboardType: TextInputType.text,
                     style: TextStyle(color: Colors.white),
@@ -227,8 +228,8 @@ class _editprofileState extends State<editprofile> {
                   TextFormField(
                     controller: _bioController,
                     keyboardType: TextInputType.multiline,
-                    minLines: 2,
-                    maxLines: 100,
+                    maxLength: 500,
+                    maxLines: 10,
                     style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
