@@ -223,7 +223,7 @@ class _Image_UploadState extends State<Image_Upload> {
                       children: [
                         TextFormField(
                           maxLines: 2,
-                          maxLength: 65,
+                          maxLength: 85,
                           style: TextStyle(color: Colors.white),
                           controller: titleController,
                           keyboardType: TextInputType.text,

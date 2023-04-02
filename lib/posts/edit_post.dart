@@ -255,7 +255,7 @@ postcategory = widget.PostCat;
                           children: [
                             TextFormField(
                               maxLines: 2,
-                              maxLength: 65,
+                              maxLength: 85,
 
                               style: TextStyle(color: Colors.white),
                               controller: titleController,
