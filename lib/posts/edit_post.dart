@@ -255,14 +255,20 @@ postcategory = widget.PostCat;
                           children: [
                             TextFormField(
                               maxLines: 2,
-                              maxLength: 45,
+                              maxLength: 65,
+
                               style: TextStyle(color: Colors.white),
                               controller: titleController,
                               keyboardType: TextInputType.text,
                               decoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white)
+                                ),
                                 labelText: "Title",
                                 hintText: "Enter post title",
-                                border: OutlineInputBorder(),
                                 hintStyle: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.normal),
@@ -270,16 +276,24 @@ postcategory = widget.PostCat;
                                     color: Colors.white,
                                     fontWeight: FontWeight.normal),
                               ),
+
                             ),
                             SizedBox(height: 30),
                             TextFormField(
+
                               style: TextStyle(color: Colors.white),
                               controller: descriptionController,
                               keyboardType: TextInputType.multiline,
                               decoration: InputDecoration(
                                 labelText: "Description",
                                 hintText: "Enter post description",
-                                border: OutlineInputBorder(),
+
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.white),
+                                  ),
                                 hintStyle: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.normal),

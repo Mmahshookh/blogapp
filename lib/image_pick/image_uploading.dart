@@ -223,7 +223,7 @@ class _Image_UploadState extends State<Image_Upload> {
                       children: [
                         TextFormField(
                           maxLines: 2,
-                          maxLength: 45,
+                          maxLength: 65,
                           style: TextStyle(color: Colors.white),
                           controller: titleController,
                           keyboardType: TextInputType.text,
@@ -252,8 +252,6 @@ class _Image_UploadState extends State<Image_Upload> {
                           style: TextStyle(color: Colors.white),
                           controller: descriptionController,
                           keyboardType: TextInputType.multiline,
-                          minLines: 2,
-                          maxLines: 100,
                           decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
