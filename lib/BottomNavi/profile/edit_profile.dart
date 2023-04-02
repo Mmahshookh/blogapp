@@ -153,7 +153,7 @@ class _editprofileState extends State<editprofile> {
                                     width: 50,
                                   ),
                                 ),
-                                Text("Camera"),
+                                Text("Camera",style: TextStyle(color: Colors.white)),
                               ],
                             ),
                             Column(
@@ -168,7 +168,7 @@ class _editprofileState extends State<editprofile> {
                                       height: 50,
                                       width: 50,
                                     )),
-                                Text("Gallery"),
+                                Text("Gallery",style: TextStyle(color: Colors.white)),
                               ],
                             ),
                           ],

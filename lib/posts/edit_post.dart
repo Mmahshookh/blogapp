@@ -174,7 +174,7 @@ postcategory = widget.PostCat;
                                       width: 50,
                                     ),
                                   ),
-                                  Text("Camera"),
+                                  Text("Camera",style: TextStyle(color: Colors.white)),
                                 ],
                               ),
                               Column(
@@ -189,7 +189,7 @@ postcategory = widget.PostCat;
                                         height: 50,
                                         width: 50,
                                       )),
-                                  Text("Gallery"),
+                                  Text("Gallery",style: TextStyle(color: Colors.white)),
                                 ],
                               ),
                             ],
@@ -280,7 +280,6 @@ postcategory = widget.PostCat;
                             ),
                             SizedBox(height: 30),
                             TextFormField(
-
                               style: TextStyle(color: Colors.white),
                               controller: descriptionController,
                               keyboardType: TextInputType.multiline,
