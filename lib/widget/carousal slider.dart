@@ -73,53 +73,47 @@ class _CarosalPageState extends State<CarosalPage> {
               ),
               child: Stack(
                 children: [
-                  Hero(
-                    tag: "blogImage",
-                    child: Container(
-                      height: 245.0,
-                      width: 400,
-                      decoration: BoxDecoration(
-                        color: kLightColor,
-                        borderRadius: BorderRadius.circular(24.0),
-                        image: DecorationImage(
-                            image: NetworkImage(likedPost[index]['image']),
-                            fit: BoxFit.cover),
-                      ),
+                  Container(
+                    height: 245.0,
+                    width: 400,
+                    decoration: BoxDecoration(
+                      color: kLightColor,
+                      borderRadius: BorderRadius.circular(24.0),
+                      image: DecorationImage(
+                          image: NetworkImage(likedPost[index]['image']),
+                          fit: BoxFit.cover),
                     ),
                   ),
                   Positioned(
                     top: 24.0,
                     right: 24.0,
-                    child: Hero(
-                      tag: "likes",
-                      child: Container(
-                        height: 34.0,
-                        width: 68.0,
-                        decoration: BoxDecoration(
-                          color: kBoxColor.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(50.0),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.favorite,
-                              size: 20,
-                              color: Colors.red,
+                    child: Container(
+                      height: 34.0,
+                      width: 68.0,
+                      decoration: BoxDecoration(
+                        color: kBoxColor.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(50.0),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.favorite,
+                            size: 20,
+                            color: Colors.red,
+                          ),
+                          SizedBox(
+                            width: 6.0,
+                          ),
+                          Text(
+                            likedPost[index]['likes'].length.toString(),
+                            style: TextStyle(
+                              fontSize: 13.0,
+                              color: Colors.black,
+                              fontFamily: "Mulish-SemiBold.ttf",
                             ),
-                            SizedBox(
-                              width: 6.0,
-                            ),
-                            Text(
-                              likedPost[index]['likes'].length.toString(),
-                              style: TextStyle(
-                                fontSize: 13.0,
-                                color: Colors.black,
-                                fontFamily: "Mulish-SemiBold.ttf",
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

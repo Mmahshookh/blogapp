@@ -50,14 +50,11 @@ class _Users_postState extends State<Users_post> {
                     children: [
                       Stack(
                         children: [
-                          Hero(
-                            tag: "blogImage",
-                            child: Image.network(
-                              widget.PostImage,
-                              height: 300.0,
-                              width: size.width,
-                              fit: BoxFit.cover,
-                            ),
+                          Image.network(
+                            widget.PostImage,
+                            height: 300.0,
+                            width: size.width,
+                            fit: BoxFit.cover,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
