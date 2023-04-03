@@ -249,7 +249,7 @@ class _Image_UploadState extends State<Image_Upload> {
                         ),
                         SizedBox(height: 30),
                         TextFormField(
-
+                          maxLines: null,
                           style: TextStyle(color: Colors.white),
                           controller: descriptionController,
                           keyboardType: TextInputType.multiline,

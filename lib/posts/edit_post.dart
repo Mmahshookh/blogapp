@@ -280,6 +280,7 @@ postcategory = widget.PostCat;
                             ),
                             SizedBox(height: 30),
                             TextFormField(
+                              minLines: null,
                               style: TextStyle(color: Colors.white),
                               controller: descriptionController,
                               keyboardType: TextInputType.multiline,
