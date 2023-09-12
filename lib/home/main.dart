@@ -14,6 +14,7 @@ import '../login_new/sign_up.dart';
 import '../login_new/signin.dart';
 
 import '../other/constants.dart';
+import 'HomeScreen.dart';
 
 
 void main() async {
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "Mulish",
       ),
       // home:BottomNavBar(0),
-      home: Sign_in(),
+      home: HomeScreen(),
       );
   }
 }
