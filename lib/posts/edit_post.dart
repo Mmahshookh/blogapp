@@ -8,6 +8,8 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
 
+import '../other/constants.dart';
+
 class Edit_Post extends StatefulWidget {
   const Edit_Post({Key? key, required this.PostCat, required this.PostImage, required this.PostTitle, required this.PostDiscription, required this.postId,
     }) : super(key: key);
@@ -105,9 +107,9 @@ postcategory = widget.PostCat;
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        backgroundColor: Colors.grey.shade200,
+        backgroundColor: Colors.black,
         appBar: AppBar(
-          backgroundColor: Colors.grey.shade900,
+          backgroundColor: Colors.black,
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
@@ -154,7 +156,8 @@ postcategory = widget.PostCat;
                   showDialog(
                       context: context,
                       builder: (buildContext) {
-                        return AlertDialog(
+                        return  AlertDialog(
+                          backgroundColor: Colors.transparent,
                           icon: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -171,7 +174,7 @@ postcategory = widget.PostCat;
                                       width: 50,
                                     ),
                                   ),
-                                  Text("Camera"),
+                                  Text("Camera",style: TextStyle(color: Colors.white)),
                                 ],
                               ),
                               Column(
@@ -186,7 +189,7 @@ postcategory = widget.PostCat;
                                         height: 50,
                                         width: 50,
                                       )),
-                                  Text("Gallery"),
+                                  Text("Gallery",style: TextStyle(color: Colors.white)),
                                 ],
                               ),
                             ],
@@ -194,40 +197,52 @@ postcategory = widget.PostCat;
                         );
                       });
                 },
-                child: Text(
-                  "UPLOAD PHOTO",
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: kBottomNavBarColor.withOpacity(0.06),
+                    borderRadius: BorderRadius.circular(10)
+                  ),
+                  child: Text(
+                    "UPLOAD PHOTO",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
               SizedBox(
                 height: 40,
               ),
-              FormHelper.dropDownWidget(
-                  context,
-                  postcategory,
-                  hintFontSize: 14,
-                  categoryId,
-                  category, (onChangedVal) {
-                categoryData = onChangedVal;
-                categoryId = onChangedVal;
-                count = int.parse(onChangedVal) - 1;
-                print("Select Category:$onChangedVal");
-                print(
-                    "Select Category:${category[int.parse(onChangedVal) - 1]['label']}");
-              }, (onValidateVal) {
-                    onValidateVal = postcategory;
-                if (onValidateVal == null) {
-                  return "Please Select Category";
-                }
-                return null;
-              },
-                  borderColor: Colors.black87,
-                  borderWidth: 5,
-                  borderFocusColor: Colors.white,
-                  borderRadius: 5,
-                  optionValue: "val",
-                  optionLabel: "label"),
+              Container(
+                width: 300,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(100)),
+                child: FormHelper.dropDownWidget(
+                    context,
+                    postcategory,
+                    hintFontSize: 14,
+                    categoryId,
+                    category, (onChangedVal) {
+                  categoryData = onChangedVal;
+                  categoryId = onChangedVal;
+                  count = int.parse(onChangedVal) - 1;
+                  print("Select Category:$onChangedVal");
+                  print(
+                      "Select Category:${category[int.parse(onChangedVal) - 1]['label']}");
+                }, (onValidateVal) {
+                      onValidateVal = postcategory;
+                  if (onValidateVal == null) {
+                    return "Please Select Category";
+                  }
+                  return null;
+                },
+                    borderColor: Colors.white,
+                    borderWidth: 5,
+                    borderFocusColor: Colors.white,
+                    borderRadius: 5,
+                    optionValue: "val",
+                    optionLabel: "label"),
+              ),
               SizedBox(
                 height: 30,
               ),
@@ -239,35 +254,51 @@ postcategory = widget.PostCat;
                         child: Column(
                           children: [
                             TextFormField(
+                              maxLines: 2,
+                              maxLength: 85,
+
+                              style: TextStyle(color: Colors.white),
                               controller: titleController,
                               keyboardType: TextInputType.text,
                               decoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white)
+                                ),
                                 labelText: "Title",
                                 hintText: "Enter post title",
-                                border: OutlineInputBorder(),
                                 hintStyle: TextStyle(
-                                    color: Colors.black,
+                                    color: Colors.white,
                                     fontWeight: FontWeight.normal),
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
+                                    color: Colors.white,
                                     fontWeight: FontWeight.normal),
                               ),
+
                             ),
                             SizedBox(height: 30),
                             TextFormField(
+                              minLines: null,
+                              style: TextStyle(color: Colors.white),
                               controller: descriptionController,
                               keyboardType: TextInputType.multiline,
-                              minLines: 2,
-                              maxLines: 100,
                               decoration: InputDecoration(
                                 labelText: "Description",
                                 hintText: "Enter post description",
-                                border: OutlineInputBorder(),
+
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.white),
+                                  ),
                                 hintStyle: TextStyle(
-                                    color: Colors.black,
+                                    color: Colors.white,
                                     fontWeight: FontWeight.normal),
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
+                                    color: Colors.white,
                                     fontWeight: FontWeight.normal),
                               ),
                             ),

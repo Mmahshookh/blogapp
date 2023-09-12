@@ -94,7 +94,7 @@ class _Profile_newState extends State<Profile_new> {
                   ],),
                 ),
                 SizedBox(
-                  height: 60,
+                  height: 50,
                 ),
                 InkWell(
                   onTap: (){

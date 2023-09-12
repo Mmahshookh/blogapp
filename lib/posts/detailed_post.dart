@@ -47,14 +47,11 @@ class _detailedpostState extends State<detailedpost> {
                   children: [
                     Stack(
                       children: [
-                        Hero(
-                          tag: "blogImage",
-                          child: Image.network(
-                            widget.PostImage,
-                            height: 300.0,
-                            width: size.width,
-                            fit: BoxFit.cover,
-                          ),
+                        Image.network(
+                          widget.PostImage,
+                          height: 300.0,
+                          width: size.width,
+                          fit: BoxFit.cover,
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
@@ -136,27 +133,26 @@ class _detailedpostState extends State<detailedpost> {
 
                                   });
                                 },
-                                child: Hero(
-                                  tag: "likes",
-                                  child: Container(
-                                    height: 34.0,
-                                    width: 68.0,
-                                    padding: EdgeInsets.symmetric(horizontal: 10.0),
-                                    decoration: BoxDecoration(
-                                      color: kBoxColor.withOpacity(0.5),
-                                      borderRadius: BorderRadius.circular(50.0),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.favorite,
-                                          size: 20,
-                                          color: likeColor,
-                                        ),
-                                        SizedBox(
-                                          width: 6.0,
-                                        ),
-                                        Text(
+                                child: Container(
+                                  height: 34.0,
+                                  width: 68.0,
+                                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                                  decoration: BoxDecoration(
+                                    color: kBoxColor.withOpacity(0.5),
+                                    borderRadius: BorderRadius.circular(50.0),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.favorite,
+                                        size: 20,
+                                        color: likeColor,
+                                      ),
+                                      SizedBox(
+                                        width: 6.0,
+                                      ),
+                                      Expanded(
+                                        child: Text(
                                           likes.length.toString(),
                                           style: TextStyle(
                                             fontSize: 13.0,
@@ -164,8 +160,8 @@ class _detailedpostState extends State<detailedpost> {
                                             fontFamily: "Mulish-SemiBold.ttf",
                                           ),
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),

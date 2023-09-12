@@ -146,7 +146,7 @@ class _Image_UploadState extends State<Image_Upload> {
                                                       width: 50,
                                                     ),
                                                   ),
-                                                  Text("Camera"),
+                                                  Text("Camera",style: TextStyle(color: Colors.white)),
                                                 ],
                                               ),
                                               Column(
@@ -161,7 +161,7 @@ class _Image_UploadState extends State<Image_Upload> {
                                                         height: 50,
                                                         width: 50,
                                                       )),
-                                                  Text("Gallery"),
+                                                  Text("Gallery",style: TextStyle(color: Colors.white),),
                                                 ],
                                               ),
                                             ],
@@ -222,6 +222,8 @@ class _Image_UploadState extends State<Image_Upload> {
                         child: Column(
                       children: [
                         TextFormField(
+                          maxLines: 2,
+                          maxLength: 85,
                           style: TextStyle(color: Colors.white),
                           controller: titleController,
                           keyboardType: TextInputType.text,
@@ -247,11 +249,10 @@ class _Image_UploadState extends State<Image_Upload> {
                         ),
                         SizedBox(height: 30),
                         TextFormField(
+                          maxLines: null,
                           style: TextStyle(color: Colors.white),
                           controller: descriptionController,
                           keyboardType: TextInputType.multiline,
-                          minLines: 2,
-                          maxLines: 100,
                           decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),

@@ -1,4 +1,5 @@
 import 'package:blogui/home/main.dart';
+import 'package:blogui/other/constants.dart';
 import 'package:blogui/posts/detailed_post.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,16 @@ class _My_blogsState extends State<My_blogs> {
                     List likes = data[index]['likes'];
                     return InkWell(
                       onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>detailedpost( data[index]["title"],  data[index]["description"],data[index]["image"],likes,data[index]['id'],data[index]['postedbyProfile'])));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>detailedpost(
+                            data[index]["title"],
+                            data[index]["description"],
+                            data[index]["image"],
+                            data[index]['likes'],
+                            data[index]['id'],
+                            data[index]['postedby']
+                        )));
+                            // detailedpost( data[index]["title"],  data[index]["description"],data[index]["image"],likes,data[index]['id'],
+                            //     data[index]['postedbyProfile'])));
                       },
                       child: data[index]["image"] == ''
                           ? Padding(
@@ -221,7 +231,13 @@ class _My_blogsState extends State<My_blogs> {
                                                       ),
                                                     );
                                                   },
-                                                  icon: Icon(Icons.more_vert)),
+                                                  icon: Container(
+                                                    height: 30,width: 30,
+                                                      padding: EdgeInsets.only(left: 3,right: 5),
+                                                      decoration: BoxDecoration(
+                                                        color: kBoxColor.withOpacity(0.9),
+                                                        borderRadius: BorderRadius.circular(10.0),
+                                                      ),child: Icon(Icons.more_vert))),
                                             ],
                                           ),
 
@@ -253,13 +269,15 @@ class _My_blogsState extends State<My_blogs> {
                                   mainAxisAlignment:
                                   MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                      data[index]["title"],
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 2,
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
+                                    Expanded(
+                                      child: Text(
+                                        data[index]["title"],
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 2,
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),

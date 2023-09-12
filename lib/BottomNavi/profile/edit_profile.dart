@@ -153,7 +153,7 @@ class _editprofileState extends State<editprofile> {
                                     width: 50,
                                   ),
                                 ),
-                                Text("Camera"),
+                                Text("Camera",style: TextStyle(color: Colors.white)),
                               ],
                             ),
                             Column(
@@ -168,7 +168,7 @@ class _editprofileState extends State<editprofile> {
                                       height: 50,
                                       width: 50,
                                     )),
-                                Text("Gallery"),
+                                Text("Gallery",style: TextStyle(color: Colors.white)),
                               ],
                             ),
                           ],
@@ -201,29 +201,48 @@ class _editprofileState extends State<editprofile> {
               height: 40,
             ),
             Container(
-              padding: const EdgeInsets.only(left: 20),
+              padding: EdgeInsets.all(10),
               child: Column(
                 children: [
-                  TextField(
+                  TextFormField(
+                    maxLength: 35,
                     controller: _usernameController,
-                    style: const TextStyle(color: Colors.white),
+                    keyboardType: TextInputType.text,
+                    style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
-                      fillColor: Colors.transparent,
-                      filled: true,
-                      labelText: 'Username',
-                      labelStyle: const TextStyle(color: Colors.white),
-                    ),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white70)),
+                        fillColor: Colors.transparent,
+                        filled: true,
+                        labelText: 'User Name',
+                        labelStyle: TextStyle(color: Colors.white),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10))),
                   ),
-                  TextField(
+                  SizedBox(
+                    height: 30,
+                  ),
+                  TextFormField(
                     controller: _bioController,
-                    maxLines: 2,
-                    style: const TextStyle(color: Colors.white),
+                    keyboardType: TextInputType.multiline,
+                    maxLength: 500,
+                    maxLines: 10,
+                    style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
-                      fillColor: Colors.transparent,
-                      filled: true,
-                      labelText: 'About',
-                      labelStyle: const TextStyle(color: Colors.white),
-                    ),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white70)),
+                        fillColor: Colors.transparent,
+                        filled: true,
+                        labelText: 'About',
+                        labelStyle: TextStyle(color: Colors.white),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10))),
                   ),
                   SizedBox(
                     height: 30,
